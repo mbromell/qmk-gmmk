@@ -1,6 +1,6 @@
 [
   {
-    "name": "03-layout-navigation"
+    "name": "04-function-layout"
   },
   [
     {
@@ -63,131 +63,152 @@
   ],
   [
     {
+      "g": false,
       "w": 1.5
     },
-    "",
-    "",
-    "",
-    "",
-    "",
+    "Mission Control",
+    "2/3rd Left",
+    "1/3rd Right",
+    "Split Left",
+    "Split Right",
+    {
+      "g": true
+    },
     "",
     {
-      "c": "#ce6969",
       "g": false
     },
-    "",
+    "<i class='kb kb-logo-windows-8'></i>",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
     {
-      "c": "#cccccc"
-    },
-    "PgUp",
-    "PgDn",
-    {
-      "c": "#ce6969"
-    },
-    "",
-    {
-      "c": "#cccccc",
       "g": true
     },
     "",
     "",
-    "",
     {
+      "g": false,
       "w": 1.5
     },
-    "",
+    "Boot Loader",
     {
-      "x": 0.5
+      "x": 0.5,
+      "g": true
     },
     ""
   ],
   [
     {
-      "c": "#4aa2e0",
       "g": false,
       "w": 1.75
     },
-    "",
+    "Prev WS",
     {
-      "c": "#cccccc",
-      "g": true
-    },
-    "",
-    "",
-    "",
-    {
-      "n": true
-    },
-    "",
-    "",
-    {
-      "g": false,
-      "a": 4
-    },
-    "\n<i class='kb kb-Arrows-Left'></i>",
-    {
-      "n": true
-    },
-    "\n<i class='kb kb-Arrows-Up'></i>",
-    "\n<i class='kb kb-Arrows-Down'></i>",
-    "\n<i class='kb kb-Arrows-Right'></i>",
-    {
-      "g": true,
-      "a": 7
-    },
-    "",
-    "",
-    {
-      "w": 2.25
-    },
-    "",
-    {
-      "x": 0.5
-    },
-    ""
-  ],
-  [
-    {
-      "g": false,
-      "w": 2.25
-    },
-    "Shift",
-    {
-      "g": true
-    },
-    "",
-    "",
-    "",
-    "",
-    "",
-    {
-      "g": false
-    },
-    "Home",
-    {
-      "a": 4,
+      "c": "#e5a100",
+      "a": 5,
       "fa": [
-        1,
-        0,
         1
       ]
     },
-    "Ctrl\n<i class='kb kb-Arrows-Left'></i>\nOpt",
-    "Ctrl\n<i class='kb kb-Arrows-Right'></i>\nOpt",
+    "Chat\n\n\n\n\n\nF16",
     {
-      "a": 7
+      "c": "#cccccc"
     },
-    "End",
+    "Obsidian\n\n\n\n\n\nF15",
+    "Browser\n\n\n\n\n\nF14",
+    {
+      "n": true
+    },
+    "Terminal\n\n\n\n\n\nF13",
+    "Spotify\n\n\n\n\n\nF17",
+    {
+      "a": 7,
+      "f": 3
+    },
+    "<i class='kb kb-logo-apple'></i>",
+    {
+      "f": 3,
+      "n": true
+    },
+    "F5",
+    {
+      "f": 3
+    },
+    "F6",
+    {
+      "f": 3
+    },
+    "F7",
+    {
+      "c": "#e5a100",
+      "f": 3
+    },
+    "F8",
+    {
+      "c": "#cccccc",
+      "f": 3
+    },
+    "New WS",
+    {
+      "f": 3,
+      "w": 2.25
+    },
+    "Next WS",
+    {
+      "x": 0.5,
+      "g": true
+    },
+    ""
+  ],
+  [
+    {
+      "g": false,
+      "f": 3,
+      "w": 2.25
+    },
+    "MEH Mod",
     {
       "g": true
     },
     "",
-    {
-      "w": 1.75
-    },
+    "",
+    "",
     "",
     {
-      "x": 1.5
+      "g": false,
+      "f": 3
+    },
+    "Prev Tab",
+    {
+      "f": 3
+    },
+    "Next Tab",
+    {
+      "f": 3
+    },
+    "F9",
+    {
+      "f": 3
+    },
+    "F10",
+    {
+      "f": 3
+    },
+    "F11",
+    {
+      "f": 3
+    },
+    "F12",
+    {
+      "f": 3,
+      "w": 1.75
+    },
+    "MEH Mod",
+    {
+      "x": 1.5,
+      "g": true
     },
     ""
   ],
@@ -209,28 +230,31 @@
     },
     "",
     {
-      "c": "#4aa2e0",
       "g": false,
       "w": 1.25
     },
     "",
     {
-      "c": "#ce6969",
+      "f": 3,
       "w": 6.25
     },
+    "Focus",
     "",
     {
-      "c": "#cccccc",
       "g": true
     },
     "",
-    "",
-    ""
+    {
+      "g": false,
+      "f": 3
+    },
+    "Debug Info"
   ],
   [
     {
       "y": -0.75,
-      "x": 13.25
+      "x": 13.25,
+      "g": true
     },
     "",
     "",
