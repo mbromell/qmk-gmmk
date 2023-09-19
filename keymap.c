@@ -21,54 +21,63 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "alias.h"
 #include "features/custom_shift_keys.h"
 
+#define MINLAYOUT(k, k0, k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, k30, k31, k32, k33, k34, k35, k36, k37, k38, k39, k40, k41, k42, k43, k44, k45, k46) \
+    LAYOUT( \
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          k, \
+        k0,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, k00,              XXXXXXX, \
+        k01,     k02,     k03,     k04,     k05,     k06,     k07,     k08,     k09,     k10,     k11,     k12,     k13,     k14,              XXXXXXX, \
+        k15,     k16,     k17,     k18,     k19,     k20,     k21,     k22,     k23,     k24,     k25,     k26,     k27,                       XXXXXXX, \
+        k28,     k29,     k30,     k31,     k32,     k33,     k34,     k35,     k36,     k37,     k38,     k39,                       XXXXXXX, XXXXXXX, \
+        k40,     k41,     k42,                       k43,                                k44,     k45,     k47,              XXXXXXX, XXXXXXX, XXXXXXX)
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // To put the keyboard into boot loader mode, press the key directly to the left of the rotary knob.
 // To reset the keyboard, hold the traditional caps-lock key and then then press the boot loader key (key next to the rotary knob)
 
-    [BASE] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,          KC_MUTE,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-        KC_UNDS, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, KC_DEL,  ALT_TAB,          XXXXXXX,
-        MOD_TAB, KC_A,    MOD_S,   MOD_D,   MOD_F,   MOD_G,   MOD_H,   MOD_J,   MOD_K,   MOD_L,   KC_DQUO, KC_ENT,           KC_ESC,           XXXXXXX,
-        KC_LSFT,          KC_Z,    KC_X,    KC_C,    MOD_V,   KC_B,    KC_N,    MOD_M,   KC_COMM, KC_DOT,  KC_SLASH,         KC_RSFT, XXXXXXX, XXXXXXX,
-        KC_LGUI, NO_IMPL, TG(NUM),                            KC_SPC,                             TG(NAV), NO_IMPL, KC_RGUI, XXXXXXX, XXXXXXX, XXXXXXX
+    [BASE] = MINLAYOUT(
+        KC_MUTE,
+        KC_ESC,                                                                                                              KC_BSPC,
+        KC_UNDS, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, KC_DEL,  ALT_TAB,
+        MOD_TAB, KC_A,    MOD_S,   MOD_D,   MOD_F,   MOD_G,   MOD_H,   MOD_J,   MOD_K,   MOD_L,   KC_DQUO, KC_ENT,  KC_ESC,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    MOD_V,   KC_B,    KC_N,    MOD_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+        KC_LGUI, NO_IMPL, TG(NUM),                   KC_SPC,                    TG(NAV), NO_IMPL, KC_RGUI
     ),
 
-    [SYM] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-        _______, KC_BSLS, KC_LABK, KC_RABK, KC_SCLN, KC_AT,   KC_TILD, KC_DLR,  KC_LCBR, KC_RCBR, KC_GRV,  W_BACK,  W_DEL,   EURO,             XXXXXXX,
-        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL,  KC_HASH, KC_AMPR, KC_COLN, KC_LPRN, KC_RPRN, KC_QUOT, END_SCL,          VI_SAVE,          XXXXXXX,
-        NO_IMPL,          KC_PERC, KC_SLSH, KC_ASTR, KC_CIRC, UPDIR,   KC_PIPE, COLON_2, KC_LBRC, KC_RBRC, KC_QUES,          NO_IMPL, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, _______,                            _______,                            _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    [SYM] = MINLAYOUT(
+        XXXXXXX,
+        _______,                                                                                                             _______,
+        _______, KC_BSLS, KC_LABK, KC_RABK, KC_SCLN, KC_AT,   KC_TILD, KC_DLR,  KC_LCBR, KC_RCBR, KC_GRV,  W_BACK,  W_DEL,   EURO,
+        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL,  KC_HASH, KC_AMPR, KC_COLN, KC_LPRN, KC_RPRN, KC_QUOT, END_SCL, VI_SAVE,
+        NO_IMPL, KC_PERC, KC_SLSH, KC_ASTR, KC_CIRC, UPDIR,   KC_PIPE, COLON_2, KC_LBRC, KC_RBRC, KC_QUES, NO_IMPL,
+        XXXXXXX, XXXXXXX, _______,                   _______,                   _______, XXXXXXX, XXXXXXX
     ),
 
-    [NUM] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-        KC_DLR,  KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_1,    KC_2,    KC_3,    _______, _______, EURO,             XXXXXXX,
-        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL,  KC_HASH, KC_AMPR, KC_COLN, KC_LPRN, KC_RPRN, KC_QUOT, _______,          _______,          XXXXXXX,
-        KC_COMM,          KC_PERC, KC_SLSH, KC_ASTR, KC_CIRC, UPDIR,   KC_PIPE, COLON_2, KC_LBRC, KC_RBRC, KC_QUES,          KC_DOT,  XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, _______,                            _______,                            _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    [NUM] = MINLAYOUT(
+        XXXXXXX,
+        _______,                                                                                                             _______,
+        KC_DLR,  KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_1,    KC_2,    KC_3,    _______, _______, EURO,
+        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL,  KC_HASH, KC_AMPR, KC_COLN, KC_LPRN, KC_RPRN, KC_QUOT, _______, _______,
+        KC_COMM, KC_PERC, KC_SLSH, KC_ASTR, KC_CIRC, UPDIR,   KC_PIPE, COLON_2, KC_LBRC, KC_RBRC, KC_QUES, KC_DOT,
+        XXXXXXX, XXXXXXX, _______,                   _______,                   _______, XXXXXXX, XXXXXXX
     ),
 
-    [NAV] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-        XXXXXXX, MV_EXIT, MV_XTAB, MY_EDIT, MY_REDO, MV_NTAB, NO_IMPL, KC_PGUP, KC_PGDN, NO_IMPL, NO_IMPL, _______, _______, KC_CAPS,          XXXXXXX,
-        _______, MY_SALL, MY_SAVE, NO_IMPL, MY_FIND, MY_FNXT, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, KC_TAB,  _______,          _______,          XXXXXXX,
-        KC_LSFT,          MY_UNDO, NO_IMPL, MY_COPY, MY_PSTE, NO_IMPL, KC_HOME, W_LEFT,  W_RIGHT, KC_END,  NO_IMPL,          KC_RSFT, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, _______,                            _______,                            _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    [NAV] = MINLAYOUT(
+        XXXXXXX,
+        _______,                                                                                                             _______,
+        XXXXXXX, MV_EXIT, MV_XTAB, MY_EDIT, MY_REDO, MV_NTAB, NO_IMPL, KC_PGUP, KC_PGDN, NO_IMPL, NO_IMPL, _______, _______, KC_CAPS,
+        _______, MY_SALL, MY_SAVE, NO_IMPL, MY_FIND, MY_FNXT, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, KC_TAB,  _______, _______,
+        KC_LSFT, MY_UNDO, NO_IMPL, MY_COPY, MY_PSTE, NO_IMPL, KC_HOME, W_LEFT,  W_RIGHT, KC_END,  NO_IMPL, KC_RSFT,
+        XXXXXXX, XXXXXXX, _______,                   _______,                   _______, XXXXXXX, XXXXXXX
     ),
 
-    [FUN] = LAYOUT(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
-        SEE_ALL, MV_2TL,  MV_1TR,  MV_L,    MV_R,    NO_IMPL, WINDOWS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   NO_IMPL, NO_IMPL, QK_BOOT,          XXXXXXX,
-        WS_LEFT, KC_F16,  KC_F15,  KC_F14,  KC_F13,  KC_F17,  MAC,     KC_F5,   KC_F6,   KC_F7,   KC_F8,   WS_NEW,           WS_RGHT,          XXXXXXX,
-        KC_MEH,           NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, MV_PTAB, MV_NTAB, KC_F9,   KC_F10,  KC_F11,  KC_F12,           KC_MEH,  XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, _______,                            MV_FULL,                            _______, XXXXXXX, MY_DEBG, XXXXXXX, XXXXXXX, XXXXXXX
+    [FUN] = MINLAYOUT(
+        XXXXXXX,
+        _______,                                                                                                             _______,
+        SEE_ALL, MV_2TL,  MV_1TR,  MV_L,    MV_R,    NO_IMPL, WINDOWS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   NO_IMPL, NO_IMPL, QK_BOOT,
+        WS_LEFT, KC_F16,  KC_F15,  KC_F14,  KC_F13,  KC_F17,  MAC,     KC_F5,   KC_F6,   KC_F7,   KC_F8,   WS_NEW,           WS_RGHT,
+        KC_MEH,           NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, MV_PTAB, MV_NTAB, KC_F9,   KC_F10,  KC_F11,  KC_F12,           KC_MEH,
+        XXXXXXX, XXXXXXX, _______,                            MV_FULL,                            _______, XXXXXXX, MY_DEBG
     ),
 };
 // clang-format on
