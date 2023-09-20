@@ -38,11 +38,14 @@
     {
       "y": 0.25,
       "c": "#f5f5f5",
-      "t": "#000000\n\n\n#e67900",
+      "t": "#db495b\n\n\n\n\n#fcbc14",
       "g": false,
-      "a": 0
+      "a": 1,
+      "fa": [
+        2
+      ]
     },
-    "<i class='mss mss-Unicode-Escape-3'></i>\n\n\n<i class='fa fa-power-off'></i>\n\n<i class='fa fa-thumbs-up'></i>",
+    "RESET\n\n\n\n<i class='fa fa-thumbs-up'></i>\n<i class='fa fa-power-off'></i>\n<i class='mss mss-Unicode-Escape-3'></i>",
     {
       "c": "#cccccc",
       "t": "#000000",
@@ -63,72 +66,16 @@
     "",
     {
       "c": "#f5f5f5",
+      "t": "#db495b",
       "g": false,
       "a": 1,
       "w": 2
     },
-    "⇧<i class='mss mss-Unicode-DeleteRight-Big-2'></i>\n<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>\n\n\n\n<i class='fa fa-thumbs-up'></i>",
+    "Mission Control\n⇧<i class='mss mss-Unicode-DeleteRight-Big-2'></i>\n\n\n<i class='fa fa-thumbs-up'></i>\n\n<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>",
     {
       "x": 0.5,
       "c": "#cccccc",
-      "g": true,
-      "a": 7
-    },
-    ""
-  ],
-  [
-    {
-      "c": "#f5f5f5",
-      "t": "#1c98da\n\n\n\n\n\n\n\n\n#000000",
-      "g": false,
-      "a": 4,
-      "w": 1.5
-    },
-    "@\n\n\n\n\n\n\n\n\n_",
-    {
-      "t": "#1c98da\n#30b35f\n\n#000000\n#000000\n\n\n\n\n#000000"
-    },
-    "$\n<i class='fa fa-google'></i>\n\n\n<i class='kb kb-Symbol-YinYang'></i>\n\n\n\n\nQ",
-    {
-      "t": "#1c98da\n\n\n#000000\n#000000\n\n\n\n\n#000000"
-    },
-    "+\n\n\n\n❖\n\n\n\n\nW",
-    "{\n\n\n\n<i class='mss mss-Unicode-Alternate-3'></i>\n\n\n\n\nE",
-    "}\n\n\n\n<i class='mss mss-Unicode-Control-4'></i>\n\n\n\n\nR",
-    {
-      "t": "#1c98da\n\n\n\n\n\n\n\n\n#000000"
-    },
-    "%\n\n\n\n\n\n\n\n\nT",
-    {
-      "t": "#1c98da\n#30b35f\n\n\n\n\n\n\n\n#000000"
-    },
-    "&euro;\n<i class='kb kb-Arrows-Top-2'></i>\n\n\n\n\n\n\n\nY",
-    {
-      "t": "#1c98da\n#30b35f\n#a662d0\n\n#000000\n\n\n\n\n#000000"
-    },
-    "../\n<i class='kb kb-Unicode-Page-Up-3'></i>\n6\n\n<i class='mss mss-Unicode-Control-4'></i>\n\n\n\n\nU",
-    "\n<i class='kb kb-Unicode-Page-Down-3'></i>\n7\n\n<i class='mss mss-Unicode-Alternate-3'></i>\n\n\n\n\nI",
-    "\n<i class='kb kb-Arrows-Bottom-2'></i>\n8\n\n❖\n\n\n\n\nO",
-    {
-      "t": "#1c98da\n\n#a662d0\n\n#000000\n\n\n\n\n#000000"
-    },
-    "\n\n9\n\n<i class='kb kb-Symbol-YinYang'></i>\n\n\n\n\nP",
-    {
-      "t": "#1c98da\n\n#a662d0\n\n\n\n\n\n\n#000000"
-    },
-    "::\n\n:\n\n\n\n\n\n\n:",
-    {
       "t": "#000000",
-      "a": 3
-    },
-    "=\n\n\n\n\n<i class='fa fa-thumbs-up'></i>",
-    {
-      "w": 1.5
-    },
-    "<i class='kb kb-Tab-1'></i>\n\n\n\n\n<i class='fa fa-thumbs-up'></i>",
-    {
-      "x": 0.5,
-      "c": "#cccccc",
       "g": true,
       "a": 7
     },
@@ -137,93 +84,178 @@
   [
     {
       "c": "#f5f5f5",
-      "t": "#1c98da\n#30b35f\n\n\n\n\n\n\n\n#000000",
+      "t": "#1c98da\n\n#db495b\n#db495b\n\n\n\n\n\n#000000",
       "g": false,
       "a": 4,
       "fa": [
-        2
-      ],
-      "w": 1.75
-    },
-    "<i class='fa fa-font'></i>\n\n\n\n\n\n\n\n\n⇧",
-    {
-      "t": "#1c98da\n#30b35f\n\n#e67900\n\n\n\n\n\n#000000",
-      "f": 3
-    },
-    "=\n<i class='fa fa-asterisk'></i>\n\n<i class='fa fa-search-plus'></i>\n\n\n\n\n\nA",
-    {
-      "f": 3
-    },
-    "-\n<i class='fa fa-save'></i>\n\n<i class='fa fa-search-minus'></i>\n\n\n\n\n\nS",
-    {
-      "t": "#1c98da\n#30b35f\n\n\n\n\n\n\n\n#000000",
-      "f2": 2
-    },
-    "(\n<i class='fa fa-caret-left'></i> <i class='fa fa-search'></i>\n\n\n\n\n\n\n\nD",
-    {
-      "c": "#cad9ed",
-      "fa": [
-        0,
-        2,
-        2,
         2,
         0,
-        2,
-        2,
-        2,
         2,
         2
       ],
-      "n": true
+      "w": 1.5
     },
-    ")\n<i class='fa fa-search'></i>\n\n\nSym\n\n\n\n\nF",
+    "@\n\n❖<i class='mss mss-Unicode-Alternate-3'></i><i class='mss mss-Unicode-Escape-3'></i>\n<i class='mss mss-Unicode-Control-4'></i><i class='mss mss-Unicode-Alternate-3'></i><i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>\n\n\n\n\n\n_",
     {
-      "c": "#f5f5f5"
-    },
-    "#\n<i class='fa fa-search'></i> <i class='fa fa-caret-right'></i>\n\n\n\n\n\n\n\nG",
-    {
-      "t": "#1c98da\n#30b35f\n\n#e67900\n\n\n\n\n\n#000000",
+      "t": "#1c98da\n#30b35f\n#db495b\n\n#000000\n\n\n\n\n#000000",
       "fa": [
+        2,
+        2,
+        0
+      ]
+    },
+    "$\n<i class='fa fa-google'></i>\n⅔|\n\n<i class='kb kb-Symbol-YinYang'></i>\n\n\n\n\nQ",
+    {
+      "t": "#1c98da\n\n#db495b\n\n#000000\n\n\n\n\n#000000"
+    },
+    "+\n\n|⅓\n\n❖\n\n\n\n\nW",
+    "{\n\n½|\n\n<i class='mss mss-Unicode-Alternate-3'></i>\n\n\n\n\nE",
+    "}\n\n|½\n\n<i class='mss mss-Unicode-Control-4'></i>\n\n\n\n\nR",
+    {
+      "t": "#1c98da\n\n#db495b\n#db495b\n\n\n\n\n\n#000000",
+      "fa": [
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "%\n\nFull\n\n\n\n\n\n\nT",
+    {
+      "t": "#1c98da\n#30b35f\n#db495b\n#db495b\n\n\n\n\n\n#000000",
+      "fa": [
+        2,
         0,
+        1,
+        0
+      ]
+    },
+    "&euro;\n<i class='kb kb-Arrows-Top-2'></i>\n<i class='fa fa-camera'></i> <i class='fa fa-tv'></i>\n\n\n\n\n\n\nY",
+    {
+      "t": "#1c98da\n#30b35f\n#a662d0\n#db495b\n#000000\n\n\n\n\n#000000",
+      "fa": [
+        2,
         0,
         2,
         2
       ]
     },
-    "[\n<i class='kb kb-Arrows-Left'></i>\n\n<i class='kb kb-Multimedia-Rewind-Start'></i>\n\n\n\n\n\nH",
+    "../\n<i class='kb kb-Unicode-Page-Up-3'></i>\n6\nF6\n<i class='mss mss-Unicode-Control-4'></i>\n\n\n\n\nU",
+    "\n<i class='kb kb-Unicode-Page-Down-3'></i>\n7\nF7\n<i class='mss mss-Unicode-Alternate-3'></i>\n\n\n\n\nI",
+    "\n<i class='kb kb-Arrows-Bottom-2'></i>\n8\nF8\n❖\n\n\n\n\nO",
     {
-      "c": "#cad9ed",
-      "t": "#1c98da\n#30b35f\n#a662d0\n#e67900\n\n\n\n\n\n#000000",
+      "t": "#1c98da\n\n#a662d0\n#db495b\n#000000\n\n\n\n\n#000000"
+    },
+    "\n\n9\nF9\n<i class='kb kb-Symbol-YinYang'></i>\n\n\n\n\nP",
+    {
+      "t": "#1c98da\n\n#a662d0\n#db495b\n\n\n\n\n\n#000000"
+    },
+    "::\n\n:\n\n\n\n\n\n\n:",
+    {
+      "t": "#000000",
+      "a": 3,
+      "f": 3
+    },
+    "=\n\n\n\n<i class='fa fa-thumbs-up'></i>",
+    {
+      "f": 3,
+      "w": 1.5
+    },
+    "<i class='kb kb-Tab-1'></i>\n\n\n\n<i class='fa fa-thumbs-up'></i>",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "g": true,
+      "a": 7
+    },
+    ""
+  ],
+  [
+    {
+      "c": "#f5f5f5",
+      "t": "#1c98da\n#30b35f\n#db495b\n#db495b\n\n\n\n\n\n#000000",
+      "g": false,
+      "a": 4,
+      "w": 1.75
+    },
+    "<i class='fa fa-font'></i>\n\n\n\n\n\n\n\n\n⇧",
+    {
+      "t": "#1c98da\n#30b35f\n#db495b\n#db495b\n\n#fcbc14\n\n#db495b\n\n#000000",
+      "a": 0,
       "fa": [
-        0,
-        0,
-        0,
+        2,
+        2,
+        2,
         2
-      ],
-      "n": true
+      ]
     },
-    "|\n<i class='kb kb-Arrows-Up'></i>\n2\n<i class='kb kb-Multimedia-Rewind'></i>\nSym\n\n\n\n\nJ",
+    "=\n<i class='fa fa-asterisk'></i>\n<i class='fa fa-folder-open'></i>\nF19\n\n<i class='fa fa-search-plus'></i>\n\n\n\nA",
+    "-\n<i class='fa fa-save'></i>\n<i class='fa fa-edit'></i>\nF18\n\n<i class='fa fa-search-minus'></i>\n\n\n\nS",
     {
-      "c": "#f5f5f5"
+      "t": "#1c98da\n#30b35f\n#db495b\n#db495b\n\n\n\n#db495b\n\n#000000",
+      "a": 4
     },
-    "&\n<i class='kb kb-Arrows-Down'></i>\n3\n<i class='kb kb-Multimedia-Play-Pause'></i>\n\n\n\n\n\nK",
-    "~\n<i class='kb kb-Arrows-Right'></i>\n4\n<i class='kb kb-Multimedia-FastForwar'></i>\n\n\n\n\n\nL",
+    "(\n<i class='fa fa-caret-left'></i> <i class='fa fa-search'></i>\n<i class='fa fa-firefox'></i>\nF17\n\n\n\n\n\nD",
     {
-      "c": "#abd6bc",
-      "t": "#1c98da\n\n#a662d0\n#e67900\n#30b35f\n\n\n\n\n#000000"
+      "c": "#d8e9ff",
+      "p": "OEM",
+      "a": 0
     },
-    "'\n\n5\n<i class='kb kb-Multimedia-FastForward-End'></i>\nNav\n\n\n\n\n\"",
+    ")\n<i class='fa fa-search'></i>\n<i class='fa fa-terminal'></i>\nF16\nSym\n\n\n\n\nF",
+    {
+      "c": "#f5f5f5",
+      "t": "#1c98da\n#30b35f\n#db495b\n#db495b\n\n\n\n\n\n#000000",
+      "p": "",
+      "a": 4
+    },
+    "#\n<i class='fa fa-search'></i> <i class='fa fa-caret-right'></i>\n\n\n\n\n\n\n\nG",
+    {
+      "t": "#1c98da\n#30b35f\n#db495b\n#db495b\n\n#fcbc14\n\n\n\n#000000",
+      "a": 0,
+      "fa": [
+        2,
+        0,
+        1,
+        2
+      ]
+    },
+    "[\n<i class='kb kb-Arrows-Left'></i>\n<i class='fa fa-camera'></i> <i class='fa fa-object-group'></i>\n\n\n<i class='kb kb-Multimedia-Rewind-Start'></i>\n\n\n\nH",
+    {
+      "c": "#d8e9ff",
+      "t": "#1c98da\n#30b35f\n#a662d0\n#db495b\n\n#fcbc14\n\n\n\n#000000",
+      "p": "OEM",
+      "fa": [
+        2,
+        0,
+        2,
+        2
+      ]
+    },
+    "|\n<i class='kb kb-Arrows-Up'></i>\n2\nF2\nSym\n<i class='kb kb-Multimedia-Rewind'></i>\n\n\n\nJ",
+    {
+      "c": "#f5f5f5",
+      "p": ""
+    },
+    "&\n<i class='kb kb-Arrows-Down'></i>\n3\nF3\n\n<i class='kb kb-Multimedia-Play-Pause'></i>\n\n\n\nK",
+    "~\n<i class='kb kb-Arrows-Right'></i>\n4\nF4\n\n<i class='kb kb-Multimedia-FastForwar'></i>\n\n\n\nL",
+    {
+      "c": "#c7f4c5",
+      "t": "#1c98da\n\n#a662d0\n#db495b\n#30b35f\n#fcbc14\n\n\n\n#000000"
+    },
+    "'\n\n5\nF5\nNav\n<i class='kb kb-Multimedia-FastForward-End'></i>\n\n\n\n\"",
     {
       "c": "#f5f5f5",
       "t": "#000000",
-      "a": 7
+      "a": 7,
+      "f": 3
     },
     "⇧",
     {
       "a": 3,
+      "f": 3,
       "w": 2.25
     },
-    "<i class='kb kb-Return-2'></i>\n\n\n\n\n<i class='fa fa-thumbs-up'></i>",
+    "<i class='kb kb-Return-2'></i>\n\n\n\n<i class='fa fa-thumbs-up'></i>",
     {
       "x": 0.5,
       "c": "#cccccc",
@@ -237,30 +269,53 @@
       "c": "#f5f5f5",
       "t": "#000000\n\n\n\n#30b35f",
       "g": false,
+      "f": 3,
       "w": 2.25
     },
     "-",
     {
-      "t": "#1c98da\n#30b35f\n\n\n\n\n\n\n\n#000000",
+      "t": "#1c98da\n#30b35f\n#db495b\n#db495b\n\n\n\n#db495b\n\n#000000",
+      "a": 4,
+      "fa": [
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    "/\n<i class='fa fa-mail-reply'></i>\n\nF19\n\n\n\n❖\n\nZ",
+    "*\n<i class='fa fa-mail-forward'></i>\n\nF18\n\n\n\n❖\n\nX",
+    "<\n<i class='fa fa-copy'></i>\n\nF17\n\n\n\n❖\n\nC",
+    ">\n<i class='fa fa-paste'></i>\n\nF16\n\n\n\n❖\n\nV",
+    {
+      "t": "#1c98da\n#30b35f\n#db495b\n#db495b\n\n\n\n\n\n#000000"
+    },
+    "^\n<i class='fa fa-file-o'></i>\nPTab\n\n\n\n\n\n\nB",
+    {
+      "fa": [
+        2,
+        0,
+        2,
+        2
+      ]
+    },
+    "]\n<i class='kb kb-Line-Start'></i>\nNTab\n\n\n\n\n\n\nN",
+    {
+      "t": "#1c98da\n#30b35f\n#a662d0\n#db495b\n\n#fcbc14\n\n\n\n#000000",
+      "a": 0
+    },
+    "\\\n<i class='kb kb-Undo-3'></i>\n1\nF1\n\n<i class='kb kb-Multimedia-Volume-Down-2'></i>\n\n\n\nM",
+    "`\n<i class='kb kb-Redo-1'></i>\n,\nF10\n\n<i class='kb kb-Multimedia-Mute-2'></i>\n\n\n\n,",
+    "!\n<i class='kb kb-Line-End'></i>\n.\nF11\n\n<i class='kb kb-Multimedia-Volume-Up-2'></i>\n\n\n\n.",
+    {
+      "t": "#1c98da\n\n#a662d0\n#db495b\n\n\n\n\n\n#000000",
       "a": 4
     },
-    "/\n<i class='fa fa-mail-reply'></i>\n\n\n\n\n\n\n\nZ",
-    "*\n<i class='fa fa-mail-forward'></i>\n\n\n\n\n\n\n\nX",
-    "<\n<i class='fa fa-copy'></i>\n\n\n\n\n\n\n\nC",
-    ">\n<i class='fa fa-paste'></i>\n\n\n\n\n\n\n\nV",
-    "^\n<i class='fa fa-file-o'></i>\n\n\n\n\n\n\n\nB",
-    "]\n<i class='kb kb-Line-Start'></i>\n\n\n\n\n\n\n\nN",
-    {
-      "t": "#1c98da\n#30b35f\n#a662d0\n#e67900\n\n\n\n\n\n#000000",
-      "f2": 0
-    },
-    "\\\n<i class='kb kb-Undo-3'></i>\n1\n<i class='kb kb-Multimedia-Volume-Down-2'></i>\n\n\n\n\n\nM",
-    "`\n<i class='kb kb-Redo-1'></i>\n,\n<i class='kb kb-Multimedia-Mute-2'></i>\n\n\n\n\n\n,",
-    "!\n<i class='kb kb-Line-End'></i>\n.\n<i class='kb kb-Multimedia-Volume-Up-2'></i>\n\n\n\n\n\n.",
-    {
-      "t": "#1c98da\n\n#a662d0\n\n\n\n\n\n\n#000000"
-    },
-    "?\n\n<i class='fa fa-calculator'></i>\n\n\n\n\n\n\n/",
+    "?\n\npy\nF12\n\n\n\n\n\n/",
     {
       "w": 1.75
     },
@@ -284,41 +339,52 @@
   [
     {
       "y": -0.25,
-      "c": "#f5f5f5",
+      "c": "#ffc9ce",
+      "t": "#000000\n\n\n\n#db495b",
       "g": false,
       "w": 1.25
     },
     "\n\n\n\nFun",
     {
-      "c": "#f0d3b4",
-      "t": "#000000\n\n\n\n#e67900",
+      "c": "#fff5d3",
+      "t": "#000000\n\n\n\n#fcbc14",
       "w": 1.25
     },
     "\n\n\n\nMedia",
     {
-      "c": "#d4c8e3",
+      "c": "#edddff",
       "t": "#000000\n\n\n\n#a662d0",
       "w": 1.25
     },
     "\n\n\n\nNum",
     {
       "c": "#f5f5f5",
-      "t": "#000000\n\n#a662d0",
+      "t": "#000000\n\n#a662d0\n\n\n\n\n\n#db495b",
       "a": 0,
       "fa": [
+        2,
+        0,
+        2,
+        2,
+        0,
+        0,
         0,
         0,
         2
       ],
       "w": 6.25
     },
-    "\n\n0\n\n\n<i class='fa fa-thumbs-up'></i>\n\n\n\n⎵",
+    "\n\n0\n\n<i class='fa fa-thumbs-up'></i>\n\n\n\n<i class='fa fa-meh-o'></i> MEH\n⎵",
     {
       "t": "#000000",
       "a": 7
     },
-    "\n\n\n\nAdjust",
     "",
+    "",
+    {
+      "c": "#ffc9ce",
+      "t": "#000000\n\n\n\n#db495b"
+    },
     "\n\n\n\nFun"
   ],
   [
@@ -326,6 +392,7 @@
       "y": -0.75,
       "x": 13.25,
       "c": "#cccccc",
+      "t": "#000000",
       "g": true
     },
     "",
