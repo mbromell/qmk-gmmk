@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NAV] = MINLAYOUT(
         _______,
         _______,                                                                                                             XXXXXXX,
-        NO_IMPL, MY_GOOG, KC_LGUI, KC_LALT, KC_LCTL, NO_IMPL, PG_TOP,  KC_PGUP, KC_PGDN, PG_END,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        NO_IMPL, MY_GOOG, KC_LGUI, KC_LALT, KC_LCTL, NO_IMPL, PG_TOP,  KC_PGUP, KC_PGDN, PG_END,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         _______, MY_SALL, MY_SAVE, MY_FPRV, MY_FIND, MY_FNXT, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, _______, XXXXXXX, XXXXXXX,
         NO_IMPL, MY_UNDO, MY_REDO, MY_COPY, MY_PSTE, MY_PSTP, KC_HOME, WORD_L,  WORD_R,  KC_END,  XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX,                   _______,                   XXXXXXX, XXXXXXX, XXXXXXX
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         NO_IMPL, NO_IMPL, ZOOM_I,  NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL,
         NO_IMPL, NO_IMPL, ZOOM_O,  NO_IMPL, NO_IMPL, NO_IMPL, KC_MPRV, KC_MRWD, KC_MPLY, KC_MFFD, KC_MNXT, NO_IMPL, NO_IMPL,
         NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, KC_VOLD, KC_MUTE, KC_VOLU, NO_IMPL, NO_IMPL,
-        XXXXXXX, _______, XXXXXXX,                   NO_IMPL,                    XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, _______, XXXXXXX,                   NO_IMPL,                   XXXXXXX, XXXXXXX, XXXXXXX
     ),
 };
 // clang-format on
@@ -108,42 +108,72 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
 #define IS_USURE detected_host_os() == OS_UNSURE
 
 #define NO_IMPL_CASE(message) println(strcat(message, " has not been implemented yet.")); return false;
-#define OSX_CASE(kMac, kWin) tap_code16((IS_MACOS) ? kMac : kWin); return false;
+#define X_TAP16(kMac, kWin) tap_code16((IS_MACOS) ? kMac : kWin); return false;
+#define X_REGISTER16(kMac, kWin) register_code16((IS_MACOS) ? kMac : kWin); return false;
+#define X_UNREGISTER16(kMac, kWin) unregister_code16((IS_MACOS) ? kMac : kWin); return false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_custom_shift_keys(keycode, record)) { return false; }
 
-    if(record->event.pressed) {
-        switch (keycode) {
-            case MY_DQUO: tap_code16(KC_DQUO); return false;
+    switch (keycode) {
+        // Mod tap intercepts for non-basic keycodes and cross-OS modifiers (CMD and CTRL)
+        case MOD_Q:
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_Q);
+                return false;
+            } else if (record->event.pressed) {
+                X_REGISTER16(KC_LCMD, KC_LCTL);
+            } else {
+                X_UNREGISTER16(KC_LCMD, KC_LCTL);
+            }
+            break;
+        case MOD_P:
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_P);
+                return false;
+            } else if (record->event.pressed) {
+                X_REGISTER16(KC_LCMD, KC_LCTL);
+            } else {
+                X_UNREGISTER16(KC_LCMD, KC_LCTL);
+            }
+            break;
+        case MOD_QUO:
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_DQUO);
+                return false;
+            }
+            break;
+    }
 
+    if (record->event.pressed) {
+        switch (keycode) {
             case UPDIR: SEND_STRING("../"); return false;
             case COLON_2: SEND_STRING("::"); return false;
             case EURO: SEND_STRING("€"); return false;
             case END_SCL: tap_code16_delay(KC_END, 10); SEND_STRING(";"); return false;
             case VI_SAVE: tap_code16_delay(KC_ESCAPE, 10); SEND_STRING(":w"); return false;
 
-            case ZOOM_I: OSX_CASE(LCMD(KC_PLUS), LCTL(KC_PLUS));
-            case ZOOM_O: OSX_CASE(LCMD(KC_MINUS), LCTL(KC_MINUS));
+            case ZOOM_I: X_TAP16(LCMD(KC_PLUS), LCTL(KC_PLUS));
+            case ZOOM_O: X_TAP16(LCMD(KC_MINUS), LCTL(KC_MINUS));
 
-            case WORD_L: OSX_CASE(LOPT(KC_LEFT), LCTL(KC_LEFT));
-            case WORD_R: OSX_CASE(LOPT(KC_RIGHT), LCTL(KC_RIGHT));
-            case PG_TOP: OSX_CASE(LCMD(KC_DOWN), LCTL(KC_END));
-            case PG_END: OSX_CASE(LCMD(KC_Z), LCTL(KC_Z));
+            case WORD_L: X_TAP16(LOPT(KC_LEFT), LCTL(KC_LEFT));
+            case WORD_R: X_TAP16(LOPT(KC_RIGHT), LCTL(KC_RIGHT));
+            case PG_TOP: X_TAP16(LCMD(KC_DOWN), LCTL(KC_END));
+            case PG_END: X_TAP16(LCMD(KC_Z), LCTL(KC_Z));
             case MY_GOOG: NO_IMPL_CASE("MY_GOOG (Search Selected)");
-            case MY_PTOP: OSX_CASE(LCMD(KC_UP), LCTL(KC_HOME));
-            case MY_UNDO: OSX_CASE(LCMD(KC_Z), LCTL(KC_Z));
-            case MY_REDO: OSX_CASE(LCMD(LSFT(KC_Z)), LCTL(KC_Y));
-            case MY_COPY: OSX_CASE(LCMD(KC_C), LCTL(KC_INSERT));
-            case MY_PSTE: OSX_CASE(LCMD(KC_V), LSFT(KC_INSERT));
-            case MY_PSTP: OSX_CASE(LCMD(LSFT(LOPT(KC_V))), LCTL(LSFT(KC_V)));
-            case MY_SALL: OSX_CASE(LCMD(KC_A), LCTL(KC_A));
-            case MY_SAVE: OSX_CASE(LCMD(KC_S), LCTL(KC_S));
-            case MY_FIND: OSX_CASE(LCMD(KC_F), LCTL(KC_F));
-            case MY_FPRV: OSX_CASE(LCMD(LSFT(KC_G)), LCTL(LSFT(KC_G)));
-            case MY_FNXT: OSX_CASE(LCMD(KC_G), LCTL(KC_G));
+            case MY_PTOP: X_TAP16(LCMD(KC_UP), LCTL(KC_HOME));
+            case MY_UNDO: X_TAP16(LCMD(KC_Z), LCTL(KC_Z));
+            case MY_REDO: X_TAP16(LCMD(LSFT(KC_Z)), LCTL(KC_Y));
+            case MY_COPY: X_TAP16(LCMD(KC_C), LCTL(KC_INSERT));
+            case MY_PSTE: X_TAP16(LCMD(KC_V), LSFT(KC_INSERT));
+            case MY_PSTP: X_TAP16(LCMD(LSFT(LOPT(KC_V))), LCTL(LSFT(KC_V)));
+            case MY_SALL: X_TAP16(LCMD(KC_A), LCTL(KC_A));
+            case MY_SAVE: X_TAP16(LCMD(KC_S), LCTL(KC_S));
+            case MY_FIND: X_TAP16(LCMD(KC_F), LCTL(KC_F));
+            case MY_FPRV: X_TAP16(LCMD(LSFT(KC_G)), LCTL(LSFT(KC_G)));
+            case MY_FNXT: X_TAP16(LCMD(KC_G), LCTL(KC_G));
 
-            case MV_FULL: OSX_CASE(LGUI(LCTL(KC_F)), KC_F11);
+            case MV_FULL: X_TAP16(LGUI(LCTL(KC_F)), KC_F11);
             case MV_L:
                 if (IS_MACOS) {
                     tap_code16(LCA(KC_LEFT));
@@ -176,22 +206,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     tap_code16(LWIN(KC_RIGHT));
                 }
                 return false;
-            case MV_EXIT: OSX_CASE(LCMD(KC_Q), LALT(KC_F4));
-            case MV_XTAB: OSX_CASE(LCMD(KC_W), LCTL(KC_W));
-            case MV_NTAB: OSX_CASE(LCMD(LSFT(KC_RBRC)), LCTL(LSFT(KC_RBRC)));
-            case MV_PTAB: OSX_CASE(LCMD(LSFT(KC_LBRC)), LCTL(LSFT(KC_LBRC)));
-            case SEE_ALL: OSX_CASE(KC_MISSION_CONTROL, LWIN(KC_TAB));
+            case MV_EXIT: X_TAP16(LCMD(KC_Q), LALT(KC_F4));
+            case MV_XTAB: X_TAP16(LCMD(KC_W), LCTL(KC_W));
+            case MV_NTAB: X_TAP16(LCMD(LSFT(KC_RBRC)), LCTL(LSFT(KC_RBRC)));
+            case MV_PTAB: X_TAP16(LCMD(LSFT(KC_LBRC)), LCTL(LSFT(KC_LBRC)));
+            case SEE_ALL: X_TAP16(KC_MISSION_CONTROL, LWIN(KC_TAB));
 
-            case WS_LEFT: OSX_CASE(LCTL(KC_LEFT), LWIN(LCTL(KC_LEFT)));
-            case WS_RGHT: OSX_CASE(LCTL(KC_RIGHT), LWIN(LCTL(KC_RIGHT)));
-            case WS_NEW: OSX_CASE(KC_MISSION_CONTROL, LWIN(LCTL(KC_D)));
+            case WS_LEFT: X_TAP16(LCTL(KC_LEFT), LWIN(LCTL(KC_LEFT)));
+            case WS_RGHT: X_TAP16(LCTL(KC_RIGHT), LWIN(LCTL(KC_RIGHT)));
+            case WS_NEW: X_TAP16(KC_MISSION_CONTROL, LWIN(LCTL(KC_D)));
 
-            case MOD_Q: OSX_CASE(LCMD_T(KC_Q), LCTL_T(KC_Q)); // If this works it's shocking!
-            case MOD_P: OSX_CASE(LCMD_T(KC_P), LCTL_T(KC_P)); // If this works it's shocking!
-
-            case CA_DEL: OSX_CASE(LCMD(LALT(KC_ESCAPE)), LCTL(LALT(KC_DELETE)));
-            case CAP_SCN: OSX_CASE(LCMD(LSFT(KC_3)), KC_PRINT_SCREEN);
-            case CAP_SEL: OSX_CASE(LCMD(LSFT(KC_5)), LWIN(LSFT(KC_S)));
+            case CA_DEL: X_TAP16(LCMD(LALT(KC_ESCAPE)), LCTL(LALT(KC_DELETE)));
+            case CAP_SCN: X_TAP16(LCMD(LSFT(KC_3)), KC_PRINT_SCREEN);
+            case CAP_SEL: X_TAP16(LCMD(LSFT(KC_5)), LWIN(LSFT(KC_S)));
         }
     }
     return true;

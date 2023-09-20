@@ -52,9 +52,6 @@ enum custom_keycodes {
     WS_RGHT,    // workspace right
     WS_NEW,     // workspace new
 
-    MOD_Q,
-    MOD_P,
-
     CA_DEL,
     CAP_SCN,    // capture screen
     CAP_SEL,    // capture selection of screen
@@ -64,15 +61,16 @@ enum custom_keycodes {
 
 // KEYPAD OVERRIDE MACROS
 #define PY_CALC HYPR(KC_P0)
-#define MY_DQUO KC_P1
 
+#define MOD_Q LCMD_T(KC_Q)
 #define MOD_W LGUI_T(KC_W)
 #define MOD_E LALT_T(KC_E)
 #define MOD_R LCTL_T(KC_R)
 #define MOD_F LT(SYM, KC_F)
 
+#define MOD_P LCMD_T(KC_P)
 #define MOD_U LCTL_T(KC_U)
 #define MOD_I LALT_T(KC_I)
 #define MOD_O LGUI_T(KC_O)
 #define MOD_J LT(SYM, KC_J)
-#define MOD_QUO LT(NAV, MY_DQUO)
+#define MOD_QUO LT(NAV, KC_DQUO)
