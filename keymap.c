@@ -41,27 +41,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = MINLAYOUT(
         KC_MUTE,
         KC_ESC,                                                                                                              KC_BSPC,
-        KC_UNDS, MOD_Q,   MOD_W,   MOD_E,   MOD_R,   KC_T,    KC_Y,    MOD_U,   MOD_I,   MOD_O,   MOD_P,   KC_COLN, KC_EQL,  KC_TAB,
-        KC_LSFT, KC_A,    KC_S,    KC_D,    MOD_F,   KC_G,    KC_H,    MOD_J,   KC_K,    KC_L,    MOD_QUO, KC_RSFT, KC_ENT,
-        KC_MINS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SCLN,
-        TO(FUN), TO(MED), TO(NUM),                   KC_SPC,                    NO_IMPL, NO_IMPL, TO(FUN)
+        KC_MINS, MOD_Q,   MOD_W,   MOD_E,   MOD_R,   KC_T,    KC_Y,    MOD_U,   MOD_I,   MOD_O,   MOD_P,   KC_SCLN, KC_EQL,  KC_TAB,
+        MOD_UND, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_DQUO, KC_COLN, KC_ENT,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    MOD_V,   KC_B,    KC_N,    MOD_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+        MO(FUN), MO(MED), MO(NUM),                   KC_SPC,                    NO_IMPL, NO_IMPL, MO(FUN)
     ),
 
     [SYM] = MINLAYOUT(
         _______,
         _______,                                                                                                             _______,
-        KC_AT,   KC_DLR,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PERC, EURO,    UPDIR,   NO_IMPL, NO_IMPL, NO_IMPL, COLON_2, _______, _______,
-        KC_CAPS, KC_EQL,  KC_MINS, KC_LPRN, KC_RPRN, KC_HASH, KC_LBRC, KC_PIPE, KC_AMPR, KC_TILD, KC_QUOT, _______, _______,
-        _______, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC, KC_RBRC, KC_BSLS, KC_GRV,  KC_EXLM, KC_QUES, END_SCL,
+        KC_AT,   KC_DLR,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PERC, NO_IMPL, UPDIR,   NO_IMPL, NO_IMPL, NO_IMPL, END_SCL, _______, _______,
+        _______, KC_EQL,  KC_MINS, KC_LPRN, KC_RPRN, KC_HASH, KC_LBRC, KC_PIPE, KC_AMPR, KC_TILD, KC_QUOT, COLON_2, _______,
+        KC_CAPS, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC, KC_RBRC, KC_BSLS, KC_GRV,  KC_EXLM, KC_QUES, _______,
         XXXXXXX, XXXXXXX, _______,                   _______,                   XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NUM] = MINLAYOUT(
         _______,
         _______,                                                                                                             _______,
-        KC_UNDS, KC_DLR,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PERC, EURO,    KC_6,    KC_7,    KC_8,    KC_9,    _______, _______, _______,
+        KC_MINS, KC_DLR,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PERC, NO_IMPL, KC_6,    KC_7,    KC_8,    KC_9,    _______, _______, _______,
         _______, KC_EQL,  KC_MINS, KC_LPRN, KC_RPRN, KC_HASH, KC_LBRC, KC_2,    KC_3,    KC_4,    KC_5,    _______, _______,
-        KC_MINS, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC, KC_RBRC, KC_1,    _______, _______, PY_CALC, _______,
+        _______, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC, KC_RBRC, KC_1,    _______, _______, PY_CALC, _______,
         XXXXXXX, XXXXXXX, _______,                   KC_0,                      XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [FUN] = MINLAYOUT(
         _______,
-        _______,                                                                                                             SEE_ALL,
+        QK_BOOT,                                                                                                             SEE_ALL,
         CA_DEL,  MV_2TL,  MV_1TR,  MV_L,    MV_R,    MV_FULL, CAP_SCN, KC_F6,   KC_F7,   KC_F8,   KC_F9,   NO_IMPL, NO_IMPL, NO_IMPL,
         NO_IMPL, KC_F19,  KC_F18,  KC_F17,  KC_F16,  NO_IMPL, CAP_SEL, KC_F2,   KC_F3,   KC_F4,   KC_F5,   NO_IMPL, NO_IMPL,
         _______, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, MV_PTAB, MV_NTAB, KC_F1,   KC_F10,  KC_F11,  KC_F12,  _______,
@@ -112,18 +112,28 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
 #define X_REGISTER16(kMac, kWin) register_code16((IS_MACOS) ? kMac : kWin); return false;
 #define X_UNREGISTER16(kMac, kWin) unregister_code16((IS_MACOS) ? kMac : kWin); return false;
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MOD_V: return 170;
+        case MOD_M: return 170;
+        default: return TAPPING_TERM;
+    }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_custom_shift_keys(keycode, record)) { return false; }
 
+    // Mod tap intercepts for non-basic keycodes and cross-OS modifiers (CMD and CTRL)
     switch (keycode) {
-        // Mod tap intercepts for non-basic keycodes and cross-OS modifiers (CMD and CTRL)
         case MOD_Q:
             if (record->tap.count && record->event.pressed) {
                 tap_code16(KC_Q);
                 return false;
             } else if (record->event.pressed) {
+                // While holding down key keep modifier registered.
                 X_REGISTER16(KC_LCMD, KC_LCTL);
             } else {
+                // Unregister modifier after stopping key press.
                 X_UNREGISTER16(KC_LCMD, KC_LCTL);
             }
             break;
@@ -132,14 +142,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 tap_code16(KC_P);
                 return false;
             } else if (record->event.pressed) {
+                // While holding down key keep modifier registered.
                 X_REGISTER16(KC_LCMD, KC_LCTL);
             } else {
+                // Unregister modifier after stopping key press.
                 X_UNREGISTER16(KC_LCMD, KC_LCTL);
             }
             break;
-        case MOD_QUO:
+        case MOD_UND:
             if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_DQUO);
+                tap_code16(KC_UNDERSCORE);
                 return false;
             }
             break;
@@ -149,7 +161,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         switch (keycode) {
             case UPDIR: SEND_STRING("../"); return false;
             case COLON_2: SEND_STRING("::"); return false;
-            case EURO: SEND_STRING("€"); return false;
             case END_SCL: tap_code16_delay(KC_END, 10); SEND_STRING(";"); return false;
             case VI_SAVE: tap_code16_delay(KC_ESCAPE, 10); SEND_STRING(":w"); return false;
 
@@ -158,8 +169,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
             case WORD_L: X_TAP16(LOPT(KC_LEFT), LCTL(KC_LEFT));
             case WORD_R: X_TAP16(LOPT(KC_RIGHT), LCTL(KC_RIGHT));
-            case PG_TOP: X_TAP16(LCMD(KC_DOWN), LCTL(KC_END));
-            case PG_END: X_TAP16(LCMD(KC_Z), LCTL(KC_Z));
+            case PG_TOP: X_TAP16(LCMD(KC_UP), LCTL(KC_HOME));
+            case PG_END: X_TAP16(LCMD(KC_DOWN), LCTL(KC_END));
             case MY_GOOG: NO_IMPL_CASE("MY_GOOG (Search Selected)");
             case MY_PTOP: X_TAP16(LCMD(KC_UP), LCTL(KC_HOME));
             case MY_UNDO: X_TAP16(LCMD(KC_Z), LCTL(KC_Z));

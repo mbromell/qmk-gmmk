@@ -14,7 +14,6 @@ enum custom_keycodes {
 
     UPDIR,      // ../
     COLON_2,    // ::
-    EURO,
     END_SCL,    // end semi-colon
     VI_SAVE,    // :w
 
@@ -66,11 +65,11 @@ enum custom_keycodes {
 #define MOD_W LGUI_T(KC_W)
 #define MOD_E LALT_T(KC_E)
 #define MOD_R LCTL_T(KC_R)
-#define MOD_F LT(SYM, KC_F)
+#define MOD_V LT(SYM, KC_V)
 
 #define MOD_P LCMD_T(KC_P)
 #define MOD_U LCTL_T(KC_U)
 #define MOD_I LALT_T(KC_I)
 #define MOD_O LGUI_T(KC_O)
-#define MOD_J LT(SYM, KC_J)
-#define MOD_QUO LT(NAV, KC_DQUO)
+#define MOD_M LT(SYM, KC_M)
+#define MOD_UND LT(NAV, KC_UNDERSCORE)

@@ -8,6 +8,10 @@ that I know will work for the corne, and so that I can confidently go ahead and
 build one without the risk of me regretting ever building it (in the event that
 it is unusable for me).
 
+Note: The screenshots of the layouts may not be up to date, use the
+`<map>.json` file and import it into http://www.keyboard-layout-editor.com
+to see a more up to date layout.
+
 So I initially designed a layout that I believe will work well for me on the
 corne, and then I mapped that layout onto the GMMK Pro, here are the layouts.
 
