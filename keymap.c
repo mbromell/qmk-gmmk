@@ -15,22 +15,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
+#include <stdio.h>
+#include "keycodes.h"
+#include "keymap_us.h"
 #include QMK_KEYBOARD_H
 
 #include "os_detection.h"
 #include "alias.h"
 #include "features/custom_shift_keys.h"
 
+// clang-format off
 #define MINLAYOUT(k, k0, k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, k30, k31, k32, k33, k34, k35, k36, k37, k38, k39, k40, k41, k42, k43, k44, k45, k46) \
     LAYOUT( \
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          k, \
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,          k, \
         k0,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, k00,              XXXXXXX, \
         k01,     k02,     k03,     k04,     k05,     k06,     k07,     k08,     k09,     k10,     k11,     k12,     k13,     k14,              XXXXXXX, \
         k15,     k16,     k17,     k18,     k19,     k20,     k21,     k22,     k23,     k24,     k25,     k26,     k27,                       XXXXXXX, \
         k28,     k29,     k30,     k31,     k32,     k33,     k34,     k35,     k36,     k37,     k38,     k39,                       XXXXXXX, XXXXXXX, \
         k40,     k41,     k42,                       k43,                                k44,     k45,     k47,              XXXXXXX, XXXXXXX, XXXXXXX)
 
-// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // To put the keyboard into boot loader mode, press the key directly to the left of the rotary knob.
 // To reset the keyboard, hold the traditional caps-lock key and then then press the boot loader key (key next to the rotary knob)
@@ -38,56 +41,62 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = MINLAYOUT(
         KC_MUTE,
         KC_ESC,                                                                                                              KC_BSPC,
-        KC_UNDS, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, KC_DEL,  ALT_TAB,
-        MOD_TAB, KC_A,    MOD_S,   MOD_D,   MOD_F,   MOD_G,   MOD_H,   MOD_J,   MOD_K,   MOD_L,   KC_DQUO, KC_ENT,  KC_ESC,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    MOD_V,   KC_B,    KC_N,    MOD_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-        KC_LGUI, NO_IMPL, TG(NUM),                   KC_SPC,                    TG(NAV), NO_IMPL, KC_RGUI
+        KC_UNDS, MOD_Q,   MOD_W,   MOD_E,   MOD_R,   KC_T,    KC_Y,    MOD_U,   MOD_I,   MOD_O,   MOD_P,   KC_COLN, KC_EQL,  KC_TAB,
+        KC_LSFT, KC_A,    KC_S,    KC_D,    MOD_F,   KC_G,    MOD_H,   MOD_J,   KC_K,    KC_L,    MOD_QUO, KC_RSFT, KC_ENT,
+        KC_DASH, KC_Z,    KC_X,    KC_C,    MOD_V,   KC_B,    KC_N,    MOD_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_SCLN,
+        TO(FUN), TO(MED), TO(NUM),                   KC_SPC,                    NO_IMPL, NO_IMPL, TO(FUN)
     ),
 
     [SYM] = MINLAYOUT(
-        XXXXXXX,
+        _______,
         _______,                                                                                                             _______,
-        _______, KC_BSLS, KC_LABK, KC_RABK, KC_SCLN, KC_AT,   KC_TILD, KC_DLR,  KC_LCBR, KC_RCBR, KC_GRV,  W_BACK,  W_DEL,   EURO,
-        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL,  KC_HASH, KC_AMPR, KC_COLN, KC_LPRN, KC_RPRN, KC_QUOT, END_SCL, VI_SAVE,
-        NO_IMPL, KC_PERC, KC_SLSH, KC_ASTR, KC_CIRC, UPDIR,   KC_PIPE, COLON_2, KC_LBRC, KC_RBRC, KC_QUES, NO_IMPL,
-        XXXXXXX, XXXXXXX, _______,                   _______,                   _______, XXXXXXX, XXXXXXX
+        KC_AT,   KC_DLR,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PERC, EURO,    UPDIR,   NO_IMPL, NO_IMPL, NO_IMPL, COLON_2, _______, _______,
+        KC_CAPS, KC_EQL,  KC_MINS, KC_LPRN, KC_RPRN, KC_HASH, KC_LBRC, KC_PIPE, KC_AMPR, KC_TILD, KC_QUOT, _______, _______,
+        _______, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC, KC_RBRC, KC_BSLS, KC_GRV,  KC_EXLM, KC_QUES, END_SCL,
+        XXXXXXX, XXXXXXX, _______,                   _______,                   XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NUM] = MINLAYOUT(
-        XXXXXXX,
+        _______,
         _______,                                                                                                             _______,
-        KC_DLR,  KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_1,    KC_2,    KC_3,    _______, _______, EURO,
-        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL,  KC_HASH, KC_AMPR, KC_COLN, KC_LPRN, KC_RPRN, KC_QUOT, _______, _______,
-        KC_COMM, KC_PERC, KC_SLSH, KC_ASTR, KC_CIRC, UPDIR,   KC_PIPE, COLON_2, KC_LBRC, KC_RBRC, KC_QUES, KC_DOT,
-        XXXXXXX, XXXXXXX, _______,                   _______,                   _______, XXXXXXX, XXXXXXX
+        KC_UNDS, KC_DLR,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PERC, EURO,    KC_6,    KC_7,    KC_8,    KC_9,    _______, _______, _______,
+        _______, KC_EQL,  KC_MINS, KC_LPRN, KC_RPRN, KC_HASH, KC_LBRC, KC_2,    KC_3,    KC_4,    KC_5,    _______, _______,
+        KC_DASH, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC, KC_RBRC, KC_1,    _______, _______, PY_CALC, _______,
+        XXXXXXX, XXXXXXX, _______,                   KC_0,                      XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NAV] = MINLAYOUT(
-        XXXXXXX,
-        _______,                                                                                                             _______,
-        XXXXXXX, MV_EXIT, MV_XTAB, MY_EDIT, MY_REDO, MV_NTAB, NO_IMPL, KC_PGUP, KC_PGDN, NO_IMPL, NO_IMPL, _______, _______, KC_CAPS,
-        _______, MY_SALL, MY_SAVE, NO_IMPL, MY_FIND, MY_FNXT, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, KC_TAB,  _______, _______,
-        KC_LSFT, MY_UNDO, NO_IMPL, MY_COPY, MY_PSTE, NO_IMPL, KC_HOME, W_LEFT,  W_RIGHT, KC_END,  NO_IMPL, KC_RSFT,
-        XXXXXXX, XXXXXXX, _______,                   _______,                   _______, XXXXXXX, XXXXXXX
+        _______,
+        _______,                                                                                                             XXXXXXX,
+        NO_IMPL, MY_GOOG, KC_LGUI, KC_LALT, KC_LCTL, NO_IMPL, MY_HOME, KC_PGUP, KC_PGDN, MY_END,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, MY_SALL, MY_SAVE, MY_FPRV, MY_FIND, MY_FNXT, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, _______, XXXXXXX, XXXXXXX,
+        NO_IMPL, MY_UNDO, MY_REDO, MY_COPY, MY_PSTE, MY_PSTP, KC_HOME, WORD_L,  WORD_R,  KC_END,  XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX,                   _______,                   XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [FUN] = MINLAYOUT(
-        XXXXXXX,
-        _______,                                                                                                             _______,
-        SEE_ALL, MV_2TL,  MV_1TR,  MV_L,    MV_R,    NO_IMPL, WINDOWS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   NO_IMPL, NO_IMPL, QK_BOOT,
-        WS_LEFT, KC_F16,  KC_F15,  KC_F14,  KC_F13,  KC_F17,  MAC,     KC_F5,   KC_F6,   KC_F7,   KC_F8,   WS_NEW,           WS_RGHT,
-        KC_MEH,           NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, MV_PTAB, MV_NTAB, KC_F9,   KC_F10,  KC_F11,  KC_F12,           KC_MEH,
-        XXXXXXX, XXXXXXX, _______,                            MV_FULL,                            _______, XXXXXXX, MY_DEBG
+        _______,
+        _______,                                                                                                             SEE_ALL,
+        CA_DEL,  MV_2TL,  MV_1TR,  MV_L,    MV_R,    MV_FULL, CAP_SCN, KC_F6,   KC_F7,   KC_F8,   KC_F9,   NO_IMPL, NO_IMPL, NO_IMPL,
+        NO_IMPL, KC_F19,  KC_F18,  KC_F17,  KC_F16,  NO_IMPL, CAP_SEL, KC_F2,   KC_F3,   KC_F4,   KC_F5,   NO_IMPL, NO_IMPL,
+        _______, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, MV_PTAB, MV_NTAB, KC_F1,   KC_F10,  KC_F11,  KC_F12,  _______,
+        _______, XXXXXXX, XXXXXXX,                   KC_MEH,                    XXXXXXX, XXXXXXX, _______
+    ),
+
+    [MED] = MINLAYOUT(
+        _______,
+        KC_PWR,                                                                                                              NO_IMPL,
+        NO_IMPL, NO_IMPL, ZOOM_I,  NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL,
+        NO_IMPL, NO_IMPL, ZOOM_O,  NO_IMPL, NO_IMPL, NO_IMPL, KC_MPRV, KC_MRWD, KC_MPLY, KC_MFFD, KC_MNXT, NO_IMPL, NO_IMPL,
+        NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, KC_VOLD, KC_MUTE, KC_VOLU, NO_IMPL, NO_IMPL,
+        XXXXXXX, _______, XXXXXXX,                   NO_IMPL,                    XXXXXXX, XXXXXXX, XXXXXXX
     ),
 };
 // clang-format on
 
 
 const custom_shift_key_t custom_shift_keys[] = {
-    {KC_DQUO, NO_IMPL},
-    {KC_SLASH, NO_IMPL},
-    {KC_DOT, NO_IMPL},
-    {KC_COMMA, NO_IMPL},
+    {KC_BACKSPACE, KC_DELETE},
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
@@ -98,91 +107,48 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
 #define IS_IOS detected_host_os() == OS_IOS
 #define IS_USURE detected_host_os() == OS_UNSURE
 
+#define NO_IMPL_CASE(message) println(strcat(message, " has not been implemented yet.")); return false;
+#define OSX_CASE(kMac, kWin) tap_code16((IS_MACOS) ? kMac : kWin); return false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_custom_shift_keys(keycode, record)) { return false; }
 
     if(record->event.pressed) {
         switch (keycode) {
-            case UPDIR:
-                SEND_STRING("../");
-                return false;
-            case COLON_2:
-                SEND_STRING("::");
-                return false;
-            case DOT_3:
-                SEND_STRING("...");
-                return false;
-            case QUOTE_3:
-                SEND_STRING("\"\"\"");
-                return false;
-            case GRAVE_3:
-                SEND_STRING("```");
-                return false;
-            case WALRUS:
-                SEND_STRING(":=");
-                return false;
-            case EURO:
-                SEND_STRING("€");
-                return false;
-            case END_SCL:
-                tap_code16_delay(KC_END, 10);
-                SEND_STRING(";");
-                return false;
-            case VI_SAVE:
-                tap_code16_delay(KC_ESCAPE, 10);
-                SEND_STRING_DELAY(":", 10);
-                SEND_STRING("w");
-                return false;
+            case MY_DQUO: tap_code16(KC_DQUO); return false;
 
-            case W_BACK:
-                tap_code16((IS_MACOS) ? LOPT(KC_BACKSPACE) : LCTL(KC_BACKSPACE));
-                return false;
-            case W_DEL:
-                tap_code16((IS_MACOS) ? LOPT(KC_DELETE) : LCTL(KC_DELETE));
-                return false;
-            case W_LEFT:
-                tap_code16((IS_MACOS) ? LOPT(KC_LEFT) : LCTL(KC_LEFT));
-                return false;
-            case W_RIGHT:
-                tap_code16((IS_MACOS) ? LOPT(KC_RIGHT) : LCTL(KC_RIGHT));
-                return false;
+            case UPDIR: SEND_STRING("../"); return false;
+            case COLON_2: SEND_STRING("::"); return false;
+            case EURO: SEND_STRING("€"); return false;
+            case END_SCL: tap_code16_delay(KC_END, 10); SEND_STRING(";"); return false;
+            case VI_SAVE: tap_code16_delay(KC_ESCAPE, 10); SEND_STRING(":w"); return false;
 
-            case MY_UNDO:
-                tap_code16((IS_MACOS) ? LCMD(KC_Z) : LCTL(KC_Z));
-                return false;
-            case MY_REDO:
-                tap_code16((IS_MACOS) ? LCMD(LSFT(KC_Z)) : LCTL(KC_Y));
-                return false;
-            case MY_COPY:
-                tap_code16((IS_MACOS) ? LCMD(KC_C) : LCTL(KC_INSERT));
-                return false;
-            case MY_PSTE:
-                tap_code16((IS_MACOS) ? LCMD(KC_V) : LSFT(KC_INSERT));
-                return false;
-            case MY_SALL:
-                tap_code16((IS_MACOS) ? LCMD(KC_A) : LCTL(KC_A));
-                return false;
-            case MY_SAVE:
-                tap_code16((IS_MACOS) ? LCMD(KC_S) : LCTL(KC_S));
-                return false;
-            case MY_FIND:
-                tap_code16((IS_MACOS) ? LCMD(KC_F) : LCTL(KC_F));
-                return false;
-            case MY_FNXT:
-                tap_code16((IS_MACOS) ? LCMD(KC_G) : LCTL(KC_G));
-                return false;
-            case MY_EDIT:
-                tap_code16((IS_MACOS) ? LCMD(KC_E) : LCTL(KC_E));
-                return false;
+            case ZOOM_I: OSX_CASE(LCMD(KC_PLUS), LCTL(KC_PLUS));
+            case ZOOM_O: OSX_CASE(LCMD(KC_MINUS), LCTL(KC_MINUS));
 
-            case MV_FULL:
-                tap_code16((IS_MACOS) ? LGUI(LCTL(KC_F)) : KC_F11);
-                return false;
+            case WORD_L: OSX_CASE(LOPT(KC_LEFT), LCTL(KC_LEFT));
+            case WORD_R: OSX_CASE(LOPT(KC_RIGHT), LCTL(KC_RIGHT));
+
+            case MY_GOOG: NO_IMPL_CASE("MY_GOOG (Search Selected)");
+            case MY_PTOP: OSX_CASE(LCMD(KC_UP), LCTL(KC_HOME));
+            case MY_PBOT: OSX_CASE(LCMD(KC_DOWN), LCTL(KC_END));
+            case MY_UNDO: OSX_CASE(LCMD(KC_Z), LCTL(KC_Z));
+            case MY_REDO: OSX_CASE(LCMD(LSFT(KC_Z)), LCTL(KC_Y));
+            case MY_COPY: OSX_CASE(LCMD(KC_C), LCTL(KC_INSERT));
+            case MY_PSTE: OSX_CASE(LCMD(KC_V), LSFT(KC_INSERT));
+            case MY_PSTP: OSX_CASE(LCMD(LSFT(LOPT(KC_V))), LCTL(LSFT(KC_V)));
+            case MY_SALL: OSX_CASE(LCMD(KC_A), LCTL(KC_A));
+            case MY_SAVE: OSX_CASE(LCMD(KC_S), LCTL(KC_S));
+            case MY_FIND: OSX_CASE(LCMD(KC_F), LCTL(KC_F));
+            case MY_FPRV: OSX_CASE(LCMD(LSFT(KC_G)), LCTL(LSFT(KC_G)));
+            case MY_FNXT: OSX_CASE(LCMD(KC_G), LCTL(KC_G));
+
+            case MV_FULL: OSX_CASE(LGUI(LCTL(KC_F)), KC_F11);
             case MV_L:
                 if (IS_MACOS) {
                     tap_code16(LCA(KC_LEFT));
                 } else {
-                    tap_code16(LCAG(KC_0));
+                    tap_code16_delay(LCAG(KC_0), 40);
                     tap_code16(LWIN(KC_LEFT));
                 }
                 return false;
@@ -190,7 +156,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 if (IS_MACOS) {
                     tap_code16(LCA(KC_RIGHT));
                 } else {
-                    tap_code16(LCAG(KC_0));
+                    tap_code16_delay(LCAG(KC_0), 40);
                     tap_code16(LWIN(KC_RIGHT));
                 }
                 return false;
@@ -198,7 +164,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 if (IS_MACOS) {
                     tap_code16(LCA(KC_G));
                 } else {
-                    tap_code16(LCAG(KC_1));
+                    tap_code16_delay(LCAG(KC_1), 40);
                     tap_code16(LWIN(KC_LEFT));
                 }
                 return false;
@@ -206,35 +172,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 if (IS_MACOS) {
                     tap_code16(LCA(KC_H));
                 } else {
-                    tap_code16(LCAG(KC_1));
+                    tap_code16_delay(LCAG(KC_1), 40);
                     tap_code16(LWIN(KC_RIGHT));
                 }
                 return false;
-            case MV_EXIT:
-                tap_code16((IS_MACOS) ? LCMD(KC_Q) : LALT(KC_F4));
-                return false;
-            case MV_XTAB:
-                tap_code16((IS_MACOS) ? LCMD(KC_W) : LCTL(KC_W));
-                return false;
-            case MV_NTAB:
-                tap_code16((IS_MACOS) ? LCMD(LSFT(KC_RBRC)) : LCTL(LSFT(KC_RBRC)));
-                return false;
-            case MV_PTAB:
-                tap_code16((IS_MACOS) ? LCMD(LSFT(KC_LBRC)) : LCTL(LSFT(KC_LBRC)));
-                return false;
-            case SEE_ALL:
-                tap_code16((IS_MACOS) ? KC_MISSION_CONTROL : LWIN(KC_TAB));
-                return false;
+            case MV_EXIT: OSX_CASE(LCMD(KC_Q), LALT(KC_F4));
+            case MV_XTAB: OSX_CASE(LCMD(KC_W), LCTL(KC_W));
+            case MV_NTAB: OSX_CASE(LCMD(LSFT(KC_RBRC)), LCTL(LSFT(KC_RBRC)));
+            case MV_PTAB: OSX_CASE(LCMD(LSFT(KC_LBRC)), LCTL(LSFT(KC_LBRC)));
+            case SEE_ALL: OSX_CASE(KC_MISSION_CONTROL, LWIN(KC_TAB));
 
-            case WS_LEFT:
-                tap_code16((IS_MACOS) ? LCTL(KC_LEFT) : LWIN(LCTL(KC_LEFT)));
-                return false;
-            case WS_RGHT:
-                tap_code16((IS_MACOS) ? LCTL(KC_RIGHT) : LWIN(LCTL(KC_RIGHT)));
-                return false;
-            case WS_NEW:
-                tap_code16((IS_MACOS) ? KC_MISSION_CONTROL : LWIN(LCTL(KC_D)));
-                return false;
+            case WS_LEFT: OSX_CASE(LCTL(KC_LEFT), LWIN(LCTL(KC_LEFT)));
+            case WS_RGHT: OSX_CASE(LCTL(KC_RIGHT), LWIN(LCTL(KC_RIGHT)));
+            case WS_NEW: OSX_CASE(KC_MISSION_CONTROL, LWIN(LCTL(KC_D)));
+
+            case MOD_Q: OSX_CASE(LCMD_T(KC_Q), LCTL_T(KC_Q)); // If this works it's shocking!
+            case MOD_P: OSX_CASE(LCMD_T(KC_P), LCTL_T(KC_P)); // If this works it's shocking!
+
+            case CA_DEL: OSX_CASE(LCMD(LALT(KC_ESCAPE)), LCTL(LALT(KC_DELETE)));
+            case CAP_SCN: OSX_CASE(LCMD(LSFT(KC_3)), KC_PRINT_SCREEN);
+            case CAP_SEL: OSX_CASE(LCMD(LSFT(KC_5)), LWIN(LSFT(KC_S)));
         }
     }
     return true;

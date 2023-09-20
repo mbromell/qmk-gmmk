@@ -6,68 +6,73 @@ enum layers {
     NUM,
     NAV,
     FUN,
+    MED,
 };
 
 enum custom_keycodes {
     MY_DEBG = SAFE_RANGE,
 
-    UPDIR,
-    COLON_2,
-    DOT_3,
-    QUOTE_3,
-    GRAVE_3,
-    WALRUS,
+    UPDIR,      // ../
+    COLON_2,    // ::
     EURO,
-    END_SCL,
-    VI_SAVE,
+    END_SCL,    // end semi-colon
+    VI_SAVE,    // :w
 
-    WINDOWS,
-    MAC,
+    ZOOM_I,     // zoom in
+    ZOOM_O,     // zoom out
 
-    W_BACK,
-    W_DEL,
-    W_LEFT,
-    W_RIGHT,
+    WORD_L,     // word left
+    WORD_R,     // word right
 
+    MY_GOOG,    // search selected
+    MY_PTOP,    // page top
+    MY_PBOT,    // page bottom
     MY_UNDO,
     MY_REDO,
     MY_COPY,
-    MY_PSTE,
-    MY_SALL,
+    MY_PSTE,    // paste
+    MY_PSTP,    // paste plain
+    MY_SALL,    // select all
     MY_SAVE,
     MY_FIND,
-    MY_FNXT,
-    MY_EDIT,
+    MY_FPRV,    // find previous
+    MY_FNXT,    // find next
 
-    MV_FULL,
-    MV_L,
-    MV_R,
-    MV_2TL,
-    MV_1TR,
-    MV_EXIT,
-    MV_XTAB,
-    MV_NTAB,
-    MV_PTAB,
-    SEE_ALL,
+    MV_FULL,    // full screen window
+    MV_L,       // split half left
+    MV_R,       // split half right
+    MV_2TL,     // split 2 thirds left
+    MV_1TR,     // split 1 third right
+    MV_EXIT,    // quit application
+    MV_XTAB,    // close tab
+    MV_NTAB,    // next tab
+    MV_PTAB,    // previous tab
+    SEE_ALL,    // mission control
+    WS_LEFT,    // workspace left
+    WS_RGHT,    // workspace right
+    WS_NEW,     // workspace new
 
-    WS_LEFT,
-    WS_RGHT,
-    WS_NEW,
+    MOD_Q,
+    MOD_P,
+
+    CA_DEL,
+    CAP_SCN,    // capture screen
+    CAP_SEL,    // capture selection of screen
 };
 
 #define NO_IMPL KC_NO
-#define ALT_TAB LALT(KC_TAB)
 
-#define MOD_TAB LT(NAV, KC_TAB)
-#define MOD_S LCTL_T(KC_S)
-#define MOD_D LALT_T(KC_D)
+// KEYPAD OVERRIDE MACROS
+#define PY_CALC HYPR(KC_P0)
+#define MY_DQUO KC_P1
+
+#define MOD_W LGUI_T(KC_W)
+#define MOD_E LALT_T(KC_E)
+#define MOD_R LCTL_T(KC_R)
 #define MOD_F LT(SYM, KC_F)
-#define MOD_G LT(NUM, KC_G)
-#define MOD_V LT(FUN, KC_V)
-#define MOD_H LT(NUM, KC_H)
+
+#define MOD_U LCTL_T(KC_U)
+#define MOD_I LALT_T(KC_I)
+#define MOD_O LGUI_T(KC_O)
 #define MOD_J LT(SYM, KC_J)
-#define MOD_K RALT_T(KC_K)
-#define MOD_L RCTL_T(KC_L)
-#define MOD_M LT(FUN, KC_M)
-#define LCK_NUM TO(NUM)
-#define LCK_NAV TO(NAV)
+#define MOD_QUO LT(NAV, MY_DQUO)
