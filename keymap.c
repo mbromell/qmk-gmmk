@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         k01,     k02,     k03,     k04,     k05,     k06,     k07,     k08,     k09,     k10,     k11,     k12,     k13,     k14,              XXXXXXX, \
         k15,     k16,     k17,     k18,     k19,     k20,     k21,     k22,     k23,     k24,     k25,     k26,     k27,                       XXXXXXX, \
         k28,     k29,     k30,     k31,     k32,     k33,     k34,     k35,     k36,     k37,     k38,     k39,                       XXXXXXX, XXXXXXX, \
-        k40,     k41,     k42,                       k43,                                k44,     k45,     k47,              XXXXXXX, XXXXXXX, XXXXXXX)
+        k40,     k41,     k42,                       k43,                                k44,     k45,     k46,              XXXXXXX, XXXXXXX, XXXXXXX)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // To put the keyboard into boot loader mode, press the key directly to the left of the rotary knob.
@@ -42,8 +42,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MUTE,
         KC_ESC,                                                                                                              KC_BSPC,
         KC_UNDS, MOD_Q,   MOD_W,   MOD_E,   MOD_R,   KC_T,    KC_Y,    MOD_U,   MOD_I,   MOD_O,   MOD_P,   KC_COLN, KC_EQL,  KC_TAB,
-        KC_LSFT, KC_A,    KC_S,    KC_D,    MOD_F,   KC_G,    MOD_H,   MOD_J,   KC_K,    KC_L,    MOD_QUO, KC_RSFT, KC_ENT,
-        KC_DASH, KC_Z,    KC_X,    KC_C,    MOD_V,   KC_B,    KC_N,    MOD_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_SCLN,
+        KC_LSFT, KC_A,    KC_S,    KC_D,    MOD_F,   KC_G,    KC_H,    MOD_J,   KC_K,    KC_L,    MOD_QUO, KC_RSFT, KC_ENT,
+        KC_MINS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SCLN,
         TO(FUN), TO(MED), TO(NUM),                   KC_SPC,                    NO_IMPL, NO_IMPL, TO(FUN)
     ),
 
@@ -61,14 +61,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,                                                                                                             _______,
         KC_UNDS, KC_DLR,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PERC, EURO,    KC_6,    KC_7,    KC_8,    KC_9,    _______, _______, _______,
         _______, KC_EQL,  KC_MINS, KC_LPRN, KC_RPRN, KC_HASH, KC_LBRC, KC_2,    KC_3,    KC_4,    KC_5,    _______, _______,
-        KC_DASH, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC, KC_RBRC, KC_1,    _______, _______, PY_CALC, _______,
+        KC_MINS, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC, KC_RBRC, KC_1,    _______, _______, PY_CALC, _______,
         XXXXXXX, XXXXXXX, _______,                   KC_0,                      XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NAV] = MINLAYOUT(
         _______,
         _______,                                                                                                             XXXXXXX,
-        NO_IMPL, MY_GOOG, KC_LGUI, KC_LALT, KC_LCTL, NO_IMPL, MY_HOME, KC_PGUP, KC_PGDN, MY_END,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        NO_IMPL, MY_GOOG, KC_LGUI, KC_LALT, KC_LCTL, NO_IMPL, PG_TOP,  KC_PGUP, KC_PGDN, PG_END,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         _______, MY_SALL, MY_SAVE, MY_FPRV, MY_FIND, MY_FNXT, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, _______, XXXXXXX, XXXXXXX,
         NO_IMPL, MY_UNDO, MY_REDO, MY_COPY, MY_PSTE, MY_PSTP, KC_HOME, WORD_L,  WORD_R,  KC_END,  XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX,                   _______,                   XXXXXXX, XXXXXXX, XXXXXXX
@@ -128,10 +128,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
             case WORD_L: OSX_CASE(LOPT(KC_LEFT), LCTL(KC_LEFT));
             case WORD_R: OSX_CASE(LOPT(KC_RIGHT), LCTL(KC_RIGHT));
-
+            case PG_TOP: OSX_CASE(LCMD(KC_DOWN), LCTL(KC_END));
+            case PG_END: OSX_CASE(LCMD(KC_Z), LCTL(KC_Z));
             case MY_GOOG: NO_IMPL_CASE("MY_GOOG (Search Selected)");
             case MY_PTOP: OSX_CASE(LCMD(KC_UP), LCTL(KC_HOME));
-            case MY_PBOT: OSX_CASE(LCMD(KC_DOWN), LCTL(KC_END));
             case MY_UNDO: OSX_CASE(LCMD(KC_Z), LCTL(KC_Z));
             case MY_REDO: OSX_CASE(LCMD(LSFT(KC_Z)), LCTL(KC_Y));
             case MY_COPY: OSX_CASE(LCMD(KC_C), LCTL(KC_INSERT));
@@ -200,10 +200,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [1] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
-    [2] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
-    [3] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
-    [4] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) }
+    [BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [SYM] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
+    [NUM] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
+    [NAV] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
+    [FUN] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
+    [MED] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
 };
 #endif

@@ -23,10 +23,10 @@ enum custom_keycodes {
 
     WORD_L,     // word left
     WORD_R,     // word right
-
+    PG_TOP,     // page top
+    PG_END,     // page_end
     MY_GOOG,    // search selected
     MY_PTOP,    // page top
-    MY_PBOT,    // page bottom
     MY_UNDO,
     MY_REDO,
     MY_COPY,
