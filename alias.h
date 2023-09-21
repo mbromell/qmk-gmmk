@@ -58,8 +58,25 @@ enum custom_keycodes {
 
 #define NO_IMPL KC_NO
 
-// KEYPAD OVERRIDE MACROS
-#define PY_CALC HYPR(KC_P0)
+// Bleeding out extra F keys for all OS's
+#define MY_F1 KC_F16
+#define MY_F2 KC_F17
+#define MY_F3 KC_F18
+#define MY_F4 KC_F19
+#define MY_F5 LGUI(KC_F16)
+#define MY_F6 LGUI(KC_F17)
+#define MY_F7 LGUI(KC_F18)
+#define MY_F8 LGUI(KC_F19)
+#define MY_F9 HYPR(KC_P0)
+#define MY_F10 HYPR(KC_P1)
+#define MY_F11 HYPR(KC_P2)
+#define MY_F12 HYPR(KC_P3)
+#define MY_F13 HYPR(KC_P4)
+#define MY_F14 HYPR(KC_P5)
+#define MY_F15 HYPR(KC_P6)
+#define MY_F16 HYPR(KC_P7)
+#define MY_F17 HYPR(KC_P8)
+#define MY_F18 HYPR(KC_P9)
 
 #define MOD_Q LCMD_T(KC_Q)
 #define MOD_W LGUI_T(KC_W)
