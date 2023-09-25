@@ -5,7 +5,7 @@
 
 enum cross_os_keycode_ranges {
   X_ZEN = SAFE_RANGE,
-  X_ZEN_T = (KC_ZEN + 0x0001),
+  X_ZEN_T = (X_ZEN + 0x0001),
   X_ZEN_T_MAX = (X_ZEN_T + KC_UP),
 };
 #undef SAFE_RANGE
@@ -15,7 +15,8 @@ enum cross_os_keycode_ranges {
 #define KC_ZEN X_ZEN
 /**
  * Left CTRL mod tap on all OS, but Left CMD mod tap on MacOS.
- * `ZEN_T(kc)` can only contain up basic keys up to `KC_UP`.
+ * `ZEN_T(kc)` can only contain up basic keys up to `KC_UP`. This is done to
+ * reduce the usage of space in the QK_USER keycode range.
  */
 #define ZEN_T(kc) (X_ZEN_T + kc)
 

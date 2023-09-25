@@ -28,52 +28,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = MINLAYOUT(
     KC_MUTE, KC_BSPC,
     KC_MINS, MOD_Q,   MOD_W,   MOD_E,   MOD_R,   KC_T,
-    MOD_UND, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    MOD_V,   KC_B,
-    MO(FUN), MO(MED), MO(NUM),                   KC_SPC,
+    MOD_UND, MOD_A,   KC_S,    KC_D,    KC_F,    KC_G,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,
+    MO(FUN), NO_IMPL, MO(MED),                   MOD_SPC,
 
-    KC_Y,    MOD_U,   MOD_I,   MOD_O,   MOD_P,   KC_SCLN, KC_EQL,  KC_TAB,
-    KC_H,    KC_J,    KC_K,    KC_L,    KC_DQUO, KC_COLN, KC_ENT,
-    KC_N,    MOD_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+    KC_Y,    MOD_U,   MOD_I,   MOD_O,   MOD_P,   KC_EQL,  KC_ESC,  KC_TAB,
+    KC_H,    KC_J,    KC_K,    KC_L,    MOD_QUO, KC_COLN, KC_ENT,
+    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                       NO_IMPL, NO_IMPL, MO(FUN)
   ),
 
   [SYM] = MINLAYOUT(
     _______, _______,
-    KC_AT,   KC_DLR,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PERC,
-    _______, KC_EQL,  KC_MINS, KC_LPRN, KC_RPRN, KC_HASH,
-    KC_CAPS, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC,
+    KC_ZEN,  KC_DLR,  KC_SLSH, KC_LBRC, KC_RBRC, MD_CODE,
+    KC_CAPS, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
+    KC_LCTL, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
     XXXXXXX, XXXXXXX, _______,                   _______,
 
-    NO_IMPL, UPDIR,   NO_IMPL, NO_IMPL, NO_IMPL, END_SCL, _______, _______,
-    KC_LBRC, KC_PIPE, KC_AMPR, KC_TILD, KC_QUOT, SCOPE,   _______,
-    KC_RBRC, KC_BSLS, KC_GRV,  KC_EXLM, KC_QUES, _______,
+    MLN_STR, KC_AMPR, KC_PIPE, KC_AT,   KC_PERC, KC_ZEN,  _______, END_SCL,
+    KC_HASH, KC_RCBR, KC_LCBR, KC_SCLN, KC_BSLS, SCOPE,   _______,
+    KC_QUOT, KC_TILD, KC_GRV,  KC_EXLM, KC_QUES, KC_RCTL,
                       XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
   [NUM] = MINLAYOUT(
     _______, _______,
-    KC_MINS, KC_DLR,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PERC,
-    _______, KC_EQL,  KC_MINS, KC_LPRN, KC_RPRN, KC_HASH,
-    _______, KC_SLSH, KC_ASTR, KC_LABK, KC_RABK, KC_CIRC,
-    XXXXXXX, XXXXXXX, _______,                   KC_0,
+    KC_ZEN,  KC_DLR,  KC_SLSH, KC_LBRC, KC_RBRC, MD_CODE,
+    KC_CAPS, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
+    KC_LCTL, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
+    XXXXXXX, XXXXXXX, _______,                   _______,
 
-    NO_IMPL, KC_6,    KC_7,    KC_8,    KC_9,    _______, _______, _______,
-    KC_LBRC, KC_2,    KC_3,    KC_4,    KC_5,    _______, _______,
-    KC_RBRC, KC_1,    _______, _______, MY_F18,  _______,
+    NO_IMPL, KC_7,    KC_8,    KC_9,    KC_PERC, KC_ZEN,  _______, _______,
+    KC_HASH, KC_4,    KC_5,    KC_6,    KC_DOT,  KC_COLN, _______,
+    KC_0,    KC_1,    KC_2,    KC_3,    KC_COMM, KC_RCTL,
                       XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
   [NAV] = MINLAYOUT(
     _______, XXXXXXX,
-    NO_IMPL, MY_GOOG, KC_LGUI, KC_LALT, KC_LCTL, NO_IMPL,
+    NO_IMPL, KC_ZEN,  KC_LGUI, KC_LALT, KC_LCTL, NO_IMPL,
     _______, MY_SALL, MY_SAVE, MY_FPRV, MY_FIND, MY_FNXT,
     _______, MY_UNDO, MY_REDO, MY_COPY, MY_PSTE, MY_PSTP,
     XXXXXXX, XXXXXXX, XXXXXXX,                   _______,
 
     PG_TOP,  KC_PGUP, KC_PGDN, PG_END,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_HOME, KC_WRDL, KC_WRDR, KC_END,  XXXXXXX, XXXXXXX,
+    KC_HOME, WORD_L,  WORD_R,  KC_END,  XXXXXXX, XXXXXXX,
                       XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
@@ -81,21 +81,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, SEE_ALL,
     CA_DEL,  MV_2TL,  MV_1TR,  MV_L,    MV_R,    MV_FULL,
     NO_IMPL, MY_F4,   MY_F3,   MY_F2,   MY_F1,   NO_IMPL,
-    _______, MY_F8,   MY_F7,   MY_F6,   MY_F5,   MV_PTAB,
+    _______, MY_F8,   MY_F7,   MY_F6,   MY_F5,   NO_IMPL,
     _______, XXXXXXX, XXXXXXX,                   KC_MEH,
 
-    CAP_SCN, KC_F6,   KC_F7,   KC_F8,   KC_F9,   NO_IMPL, NO_IMPL, NO_IMPL,
-    CAP_SEL, KC_F2,   KC_F3,   KC_F4,   KC_F5,   NO_IMPL, NO_IMPL,
-    MV_NTAB, KC_F1,   KC_F10,  KC_F11,  KC_F12,  _______,
+    CAP_SCN, KC_F7,   KC_F8,   KC_F9,   KC_F12,  NO_IMPL, NO_IMPL, NO_IMPL,
+    CAP_SEL, KC_F4,   KC_F5,   KC_F6,   KC_F11,  NO_IMPL, NO_IMPL,
+    NO_IMPL, KC_F1,   KC_F2,   KC_F3,   KC_F10,  _______,
                       XXXXXXX, XXXXXXX, _______
   ),
 
   [MED] = MINLAYOUT(
     _______, NO_IMPL,
-    NO_IMPL, NO_IMPL, ZOOM_I,  NO_IMPL, NO_IMPL, NO_IMPL,
-    NO_IMPL, NO_IMPL, ZOOM_O,  NO_IMPL, NO_IMPL, NO_IMPL,
+    NO_IMPL, NO_IMPL, MY_ZIN,  NO_IMPL, NO_IMPL, NO_IMPL,
+    NO_IMPL, NO_IMPL, MY_ZOUT, NO_IMPL, NO_IMPL, NO_IMPL,
     NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL,
-    XXXXXXX, _______, XXXXXXX,                   NO_IMPL,
+    XXXXXXX, XXXXXXX, _______,                   NO_IMPL,
 
     NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, KC_PWR, NO_IMPL,
     KC_MPRV, KC_MRWD, KC_MPLY, KC_MFFD, KC_MNXT, NO_IMPL, NO_IMPL,
@@ -134,7 +134,6 @@ const cross_os_key_tap_t cross_os_key_tap[] = {
     {PG_END,  LCTL(KC_END),           LCMD(KC_DOWN)},
     {MY_SALL, LCTL(KC_A),             LCMD(KC_A)},
     {MY_SAVE, LCTL(KC_S),             LCMD(KC_S)},
-    {MY_PTOP, LCTL(KC_HOME),          LCMD(KC_UP)},
     {MY_REDO, LCTL(KC_Y),             LCMD(LSFT(KC_Z))},
     {MY_COPY, LCTL(KC_INSERT),        LCMD(KC_C)},
     {MY_PSTE, LSFT(KC_INSERT),        LCMD(KC_V)},
@@ -147,13 +146,7 @@ const cross_os_key_tap_t cross_os_key_tap[] = {
     {MV_R,    KC_NO,                  LCA(KC_RIGHT)},
     {MV_2TL,  KC_NO,                  LCA(KC_G)},
     {MV_1TR,  KC_NO,                  LCA(KC_H)},
-    {MV_XTAB, LCTL(KC_W),             LCMD(KC_W)},
-    {MV_NTAB, LCTL(LSFT(KC_RBRC)),    LCMD(LSFT(KC_RBRC))},
-    {MV_PTAB, LCTL(LSFT(KC_LBRC)),    LCMD(LSFT(KC_LBRC))},
     {SEE_ALL, LWIN(KC_TAB),           KC_MISSION_CONTROL},
-    {WS_LEFT, LWIN(LCTL(KC_LEFT)),    LCTL(KC_LEFT)},
-    {WS_RGHT, LWIN(LCTL(KC_RIGHT)),   LCTL(KC_RIGHT)},
-    {WS_NEW,  LWIN(LCTL(KC_D)),       KC_MISSION_CONTROL},
     {CA_DEL,  LCTL(LALT(KC_DELETE)),  LCMD(LALT(KC_ESCAPE))},
     {CAP_SCN, KC_PRINT_SCREEN,        LCMD(LSFT(KC_3))},
     {CAP_SEL, LWIN(LSFT(KC_S)),       LCMD(LSFT(KC_5))},
@@ -199,6 +192,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case VI_SAVE:
       tap_code16_delay(KC_ESCAPE, 10);
       SEND_STRING(":w");
+      return false;
+    case MD_CODE:
+      SEND_STRING("```");
+      return false;
+    case MLN_STR:
+      SEND_STRING("\"\"\"");
       return false;
     }
   }

@@ -16,6 +16,8 @@ enum custom_keycodes {
   SCOPE,
   END_SCL,
   VI_SAVE,
+  MD_CODE,
+  MLN_STR,
 
   MY_ZIN,  // zoom in
   MY_ZOUT, // zoom out
@@ -26,8 +28,6 @@ enum custom_keycodes {
   MY_SAVE,
   PG_TOP,  // page top
   PG_END,  // page_end
-  MY_GOOG, // search selected
-  MY_PTOP, // page top
   MY_UNDO,
   MY_REDO,
   MY_COPY,
@@ -43,13 +43,7 @@ enum custom_keycodes {
   MV_2TL,  // split 2 thirds left
   MV_1TR,  // split 1 third right
   MV_EXIT, // quit application
-  MV_XTAB, // close tab
-  MV_NTAB, // next tab
-  MV_PTAB, // previous tab
   SEE_ALL, // mission control
-  WS_LEFT, // workspace left
-  WS_RGHT, // workspace right
-  WS_NEW,  // workspace new
 
   CA_DEL,  // ctrl + alt + delete
   CAP_SCN, // capture screen
@@ -59,6 +53,7 @@ enum custom_keycodes {
 #define XXX KC_NO
 #define NO_IMPL KC_NO
 
+#define MOD_SPC LT(NUM, KC_SPC)
 #define MOD_Q ZEN_T(KC_Q)
 #define MOD_W LGUI_T(KC_W)
 #define MOD_E LALT_T(KC_E)
