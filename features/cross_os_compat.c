@@ -19,36 +19,5 @@ bool process_cross_os_compat(uint16_t keycode, keyrecord_t *record) {
       }
     }
   }
-
-  if (keycode < KC_ZEN || keycode >= SAFE_RANGE) {
-    return true;
-  }
-
-  switch (keycode) {
-  case KC_ZEN:
-    if (record->event.pressed) {
-      register_code16(detected_host_os() == OS_MACOS ? KC_LCMD : KC_LCTL);
-      return false;
-    } else {
-      unregister_code16(detected_host_os() == OS_MACOS ? KC_LCMD : KC_LCTL);
-      return false;
-    }
-  case X_ZEN_T ... X_ZEN_T_MAX:
-    if (record->tap.count && record->event.pressed) {
-      // It's a tap, so tap the keycode.
-      tap_code16(keycode - X_ZEN_T);
-      return false;
-    } else if (record->event.pressed) {
-      // While holding down key keep modifier registered.
-      register_code16(detected_host_os() == OS_MACOS ? KC_LCMD : KC_LCTL);
-      return false;
-    } else {
-      // Unregister modifier after stopping key press.
-      unregister_code16(detected_host_os() == OS_MACOS ? KC_LCMD : KC_LCTL);
-      return false;
-    }
-    break;
-  }
-
   return true;
 }
