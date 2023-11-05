@@ -38,16 +38,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MO(FUN), NO_IMPL, NO_IMPL
   ),
 
+  // TODO: These layers need mod taps too!
   [SYM] = MINLAYOUT(
     _______, _______,
-    KC_ZEN,  KC_DLR,  KC_SLSH, KC_LBRC, KC_RBRC, MD_CODE,
-    KC_CAPS, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
-    KC_LCTL, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
+    KC_ZEN,  KC_DLR,  KC_SLSH, KC_LBRC, KC_RBRC, NO_IMPL,
+    _______, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
+    _______, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
     XXXXXXX, XXXXXXX, _______,                   _______,
 
-    MLN_STR, KC_AMPR, KC_PIPE, KC_AT,   KC_PERC, KC_ZEN,  _______, END_SCL,
+    NO_IMPL, KC_AMPR, KC_PIPE, KC_AT,   KC_PERC, NO_IMPL, _______, NO_IMPL,
     KC_HASH, KC_RCBR, KC_LCBR, KC_SCLN, KC_BSLS, SCOPE,   _______,
-    KC_QUOT, KC_TILD, KC_GRV,  KC_EXLM, KC_QUES, KC_RCTL,
+    KC_QUOT, KC_TILD, KC_GRV,  KC_EXLM, KC_QUES, NO_IMPL,
     XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
@@ -67,8 +68,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [NAV] = MINLAYOUT(
     _______, XXXXXXX,
     NO_IMPL, KC_ZEN,  KC_LGUI, KC_LALT, KC_LCTL, NO_IMPL,
-    _______, , , , MY_FIND, MY_FNXT,
-    _______, MY_UNDO, MY_REDO, MY_COPY, PASTE,   PASTE_P,
+    _______, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL,
+    _______, UNDO,    REDO,    COPY,    PASTE,   PASTE_P,
     XXXXXXX, XXXXXXX, XXXXXXX,                   _______,
 
     PG_TOP,  KC_PGUP, KC_PGDN, PG_END,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -78,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [FUN] = MINLAYOUT(
-    _______, SEE_ALL,
+    _______, XXXXXXX,
     CA_DEL,  NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL,
     KC_CAPS, KC_MPRV, KC_MRWD, KC_MPLY, KC_MFFD, KC_MNXT,
     KC_PWR,  NO_IMPL, KC_MUTE, KC_VOLD, KC_VOLD, NO_IMPL,
