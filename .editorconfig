@@ -5,6 +5,6 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 [*.{c,h,cpp}]
-indent_size = 2
+indent_size = 4
 indent_style = space
 

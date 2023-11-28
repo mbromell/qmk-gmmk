@@ -16,102 +16,109 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include "keycodes.h"
 #include "keymap_us.h"
+#include "quantum.h"
 #include <stdio.h>
 #include QMK_KEYBOARD_H
 
 #include "alias.h"
 #include "features/cross_os_compat.h"
-#include "features/custom_shift_keys.h"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [BASE] = MINLAYOUT(
-    KC_MUTE, KC_BSPC,
-    KC_MINS, MOD_Q,   MOD_W,   MOD_E,   MOD_R,   KC_T,
-    KC_UNDS, MOD_A,   MOD_S,   KC_D,    KC_F,    KC_G,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,
-    NO_IMPL, NO_IMPL, MO(FUN),                   MOD_SPC,
+    [BASE] = MINLAYOUT(
+        KC_MUTE, KC_BSPC,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
+        KC_SCLN, MOD_A,   MOD_S,   KC_D,    KC_F,    KC_G,
+        KC_LSFT, KC_Z,    MOD_X,   MOD_C,   MOD_V,   KC_B,
+        NO_IMPL, NO_IMPL, MOD_ZEL,                   MOD_SYS,
 
-    KC_Y,    MOD_U,   MOD_I,   MOD_O,   MOD_P,   KC_EQL,  KC_ESC,  KC_TAB,
-    KC_H,    KC_J,    KC_K,    KC_L,    MOD_QUO, KC_COLN, KC_ENT,
-    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    MO(FUN), NO_IMPL, NO_IMPL
-  ),
+        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UNDS, KC_ESC,  KC_DEL,
+        KC_H,    KC_J,    KC_K,    KC_L,    MOD_DQ,  MOD_SQ,  KC_ENT,
+        KC_N,    MOD_M,   MOD_COM, MOD_DOT, MOD_SLS, KC_RSFT,
+                          MOD_VIM, NO_IMPL, NO_IMPL
+    ),
 
-  // TODO: These layers need mod taps too!
-  [SYM] = MINLAYOUT(
-    _______, _______,
-    KC_ZEN,  KC_DLR,  KC_SLSH, KC_LBRC, KC_RBRC, NO_IMPL,
-    _______, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
-    _______, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
-    XXXXXXX, XXXXXXX, _______,                   _______,
+    [SYM] = MINLAYOUT(
+        _______, _______,
+        _______, KC_DLR,  KC_LCBR, KC_RCBR, /*HERE*/MOD_RBR, NO_IMPL,
+        _______, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
+        _______, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
+        xxxxxxx, xxxxxxx, xxxxxxx,                   _______,
 
-    NO_IMPL, KC_AMPR, KC_PIPE, KC_AT,   KC_PERC, NO_IMPL, _______, NO_IMPL,
-    KC_HASH, KC_RCBR, KC_LCBR, KC_SCLN, KC_BSLS, SCOPE,   _______,
-    KC_QUOT, KC_TILD, KC_GRV,  KC_EXLM, KC_QUES, NO_IMPL,
-    XXXXXXX, XXXXXXX, XXXXXXX
-  ),
+        NO_IMPL, MOD_AMP, MOD_PIP, MOD_AT,  MOD_PRC, NO_IMPL, _______, NO_IMPL,
+        KC_HASH, KC_RCBR, KC_LCBR, KC_SCLN, KC_BSLS, SCOPE,   _______,
+        KC_QUOT, KC_TILD, KC_GRV,  KC_EXLM, KC_QUES, NO_IMPL,
+                          xxxxxxx, xxxxxxx, xxxxxxx
+    ),
 
-  [NUM] = MINLAYOUT(
-    _______, _______,
-    KC_ZEN,  KC_DLR,  KC_SLSH, KC_LBRC, KC_RBRC, MD_CODE,
-    KC_CAPS, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
-    KC_LCTL, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
-    XXXXXXX, XXXXXXX, _______,                   _______,
+    [NUM] = MINLAYOUT(
+        _______, _______,
+        _______, MOD_DLR, MOD_SLS, MOD_LBR, MOD_RBR, NO_IMPL,
+        _______, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
+        _______, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
+        xxxxxxx, xxxxxxx, xxxxxxx,                   _______,
 
-    NO_IMPL, KC_7,    KC_8,    KC_9,    KC_PERC, KC_ZEN,  _______, _______,
-    KC_HASH, KC_4,    KC_5,    KC_6,    KC_DOT,  KC_COLN, _______,
-    KC_0,    KC_1,    KC_2,    KC_3,    KC_COMM, KC_RCTL,
-    XXXXXXX, XXXXXXX, XXXXXXX
-  ),
+        NO_IMPL, KC_7,    KC_8,    KC_9,    KC_PERC, NO_IMPL, _______, _______,
+        KC_HASH, KC_4,    KC_5,    KC_6,    KC_DOT,  _______, _______,
+        KC_0,    KC_1,    KC_2,    KC_3,    KC_COMM, KC_RCTL,
+                          xxxxxxx, xxxxxxx, xxxxxxx
+    ),
 
-  [NAV] = MINLAYOUT(
-    _______, XXXXXXX,
-    NO_IMPL, KC_ZEN,  KC_LGUI, KC_LALT, KC_LCTL, NO_IMPL,
-    _______, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL,
-    _______, UNDO,    REDO,    COPY,    PASTE,   PASTE_P,
-    XXXXXXX, XXXXXXX, XXXXXXX,                   _______,
+    [NAV] = MINLAYOUT(
+        _______, _______,
+        NO_IMPL, KC_LSFT, KC_LGUI, KC_LCTL, KC_LALT, NO_IMPL,
+        NO_IMPL, NO_IMPL, _______, NO_IMPL, VIM_CMD, NO_IMPL,
+        _______, UNDO,    REDO,    COPY,    PASTE,   PASTE_P,
+        xxxxxxx, xxxxxxx, xxxxxxx,                   _______,
 
-    PG_TOP,  KC_PGUP, KC_PGDN, PG_END,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_HOME, WORD_L,  WORD_R,  KC_END,  XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX
-  ),
+        PG_TOP,  KC_PGUP, KC_PGDN, PG_END,  xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,
+        KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, xxxxxxx, xxxxxxx, _______,
+        KC_HOME, WORD_L,  WORD_R,  KC_END,  xxxxxxx, _______,
+                          xxxxxxx, xxxxxxx, xxxxxxx
+    ),
 
-  [FUN] = MINLAYOUT(
-    _______, XXXXXXX,
-    CA_DEL,  NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL,
-    KC_CAPS, KC_MPRV, KC_MRWD, KC_MPLY, KC_MFFD, KC_MNXT,
-    KC_PWR,  NO_IMPL, KC_MUTE, KC_VOLD, KC_VOLD, NO_IMPL,
-    _______, XXXXXXX, XXXXXXX,                   NO_IMPL,
+    [FUN] = MINLAYOUT(
+        _______, xxxxxxx,
+        xxxxxxx, KC_F12,  KC_F7,   KC_F8,   KC_F9, NO_IMPL,
+        xxxxxxx, KC_F11,  KC_F4,   KC_F5,   KC_F6, NO_IMPL,
+        _______, KC_F10,  KC_F1,   KC_F2,   KC_F3, NO_IMPL,
+        xxxxxxx, xxxxxxx, xxxxxxx,                 NO_IMPL,
 
-    CAP_SCN, KC_F7,   KC_F8,   KC_F9,   KC_F12,  NO_IMPL, NO_IMPL, NO_IMPL,
-    CAP_SEL, KC_F4,   KC_F5,   KC_F6,   KC_F11,  NO_IMPL, NO_IMPL,
-    NO_IMPL, KC_F1,   KC_F2,   KC_F3,   KC_F10,  _______,
-    XXXXXXX, XXXXXXX, _______
-  ),
+        NO_IMPL, CAP_SEL, CAP_SCN, NO_IMPL, NO_IMPL, xxxxxxx, xxxxxxx, xxxxxxx,
+        NO_IMPL, KC_MPRV, KC_MPLY, KC_MNXT, NO_IMPL, xxxxxxx, xxxxxxx,
+        NO_IMPL, KC_MUTE, KC_VOLD, KC_VOLU, NO_IMPL, _______,
+                          xxxxxxx, xxxxxxx, xxxxxxx
+    ),
 
-  /*
-  [] = MINLAYOUT(
-    _______, _______,
-    _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,
-    _______, _______, _______,                   _______,
+    [SYS] = MINLAYOUT(
+        _______, xxxxxxx,
+        xxxxxxx, NO_IMPL, GF_19,   SF_18,   F_17,    NO_IMPL,
+        xxxxxxx, SGF_18,  F_19,    GF_18,   GF_17,   NO_IMPL,
+        xxxxxxx, NO_IMPL, SF_19,   F_18,    NO_IMPL, NO_IMPL,
+        xxxxxxx, xxxxxxx, _______,                   _______,
 
-    _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,
-                      _______, _______, _______
-  ),
-  */
+        NO_IMPL, SGF_13,  SGF_16,  NO_IMPL, NO_IMPL, xxxxxxx, xxxxxxx, xxxxxxx,
+        F_13,    F_14,    F_15,    F_16,    NO_IMPL, xxxxxxx, xxxxxxx,
+        NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, xxxxxxx,
+                          _______, xxxxxxx, xxxxxxx
+    ),
+
+
+    /*
+    [] = MINLAYOUT(
+        _______, _______,
+        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______,                   _______,
+
+        _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,
+                          _______, _______, _______
+    ),
+    */
 };
-
-const custom_shift_key_t custom_shift_keys[] = {
-    {KC_BACKSPACE, KC_DELETE},
-};
-uint8_t NUM_CUSTOM_SHIFT_KEYS =
-    sizeof(custom_shift_keys) / sizeof(*custom_shift_keys);
 
 const cross_os_key_tap_t cross_os_key_tap[] = {
     {WORD_L, LCTL(KC_LEFT), LOPT(KC_LEFT)},
@@ -136,35 +143,82 @@ uint8_t NUM_CROSS_OS_KEY_TAP =
  * Custom macros to do some fancy stuff when keys are pressed, held, or raised.
  */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_custom_shift_keys(keycode, record)) {
-    return false;
-  }
-  if (!process_cross_os_compat(keycode, record)) {
-    return false;
-  }
-
-  // Mod tap intercepts for non-basic keycodes
-  if (record->tap.count && record->event.pressed) {
-    switch (keycode) {
-    case MOD_QUO:
-      tap_code16(KC_DOUBLE_QUOTE);
-      return false;
+    if (!process_custom_shift_keys(keycode, record)) {
+        return false;
     }
-  }
-
-  // The rest of the macros
-  if (record->event.pressed) {
-    switch (keycode) {
-    case UPDIR:
-      SEND_STRING("../");
-      return false;
-    case SCOPE:
-      SEND_STRING("::");
-      return false;
+    if (!process_cross_os_compat(keycode, record)) {
+        return false;
     }
-  }
 
-  return true;
+    // Mod tap intercepts for non-basic keycodes
+    if (record->tap.count && record->event.pressed) {
+        switch (keycode) {
+        case MOD_DQ:
+            tap_code16(KC_DOUBLE_QUOTE);
+            return false;
+        case MOD_EXL:
+            tap_code16(KC_EXCLAIM);
+            return false;
+        case MOD_AMP:
+            tap_code16(KC_AMPERSAND);
+            return false;
+        case MOD_PIP:
+            tap_code16(KC_PIPE);
+            return false;
+        case MOD_TLD:
+            tap_code16(KC_TILDE);
+            return false;
+        case MOD_BSL:
+            tap_code16(KC_BACKSLASH);
+            return false;
+        case MOD_ZEL:
+            // tap_code16(KC_ENTER);
+            // return false;
+            break;
+        case MOD_VIM:
+            // tap_code16(KC_TAB);
+            // return false;
+            break;
+        }
+    }
+
+    // Mod tap intercepts for non-basic keycodes that have an extra modifier
+    // if (!record->tap.count) {
+    //     switch (keycode) {
+    //     case MOD_ZEL:
+    //         if (record->event.pressed) {
+    //             register_mods(MOD_LALT);
+    //         } else {
+    //             unregister_mods(MOD_LALT);
+    //         }
+    //         return false;
+    //     case MOD_VIM:
+    //         if (record->event.pressed) {
+    //             register_mods(MOD_LALT);
+    //         } else {
+    //             unregister_mods(MOD_LALT);
+    //         }
+    //         return false;
+    //     }
+    // }
+
+    // Standard macros
+    if (record->event.pressed) {
+        switch (keycode) {
+        case UPDIR:
+            SEND_STRING("../");
+            return false;
+        case SCOPE:
+            SEND_STRING("::");
+            return false;
+        case VIM_CMD:
+            tap_code16(KC_ESC);
+            tap_code16(KC_COLON);
+            return false;
+        }
+    }
+
+    return true;
 }
 
 /*
@@ -172,14 +226,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
  * Tapping terms specific for each mod/layer tap key.
  */
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-  case MOD_QUO:
-    return 170;
-  case MOD_A:
-    return 170;
-  default:
-    return TAPPING_TERM;
-  }
+    switch (keycode) {
+    case MOD_QUO:
+        return 170;
+    case MOD_A:
+        return 170;
+    default:
+        return TAPPING_TERM;
+    }
 }
 
 // Rotary encoder config. You need to have the clockwise and counter clockwise
@@ -191,5 +245,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [NUM] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
     [NAV] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
     [FUN] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
+    [SYS] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
 };
 #endif
