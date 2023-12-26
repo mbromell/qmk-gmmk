@@ -33,56 +33,56 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         NO_IMPL, NO_IMPL, MOD_ZEL,                   MOD_SYS,
 
         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UNDS, KC_ESC,  KC_DEL,
-        KC_H,    KC_J,    KC_K,    KC_L,    MOD_DQ,  MOD_SQ,  KC_ENT,
+        KC_H,    KC_J,    KC_K,    KC_L,    MOD_DQU, MOD_SQU, KC_ENT,
         KC_N,    MOD_M,   MOD_COM, MOD_DOT, MOD_SLS, KC_RSFT,
                           MOD_VIM, NO_IMPL, NO_IMPL
     ),
 
     [SYM] = MINLAYOUT(
         _______, _______,
-        _______, KC_DLR,  KC_LCBR, KC_RCBR, /*HERE*/MOD_RBR, NO_IMPL,
-        _______, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
-        _______, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
+        _______, KC_DLR,  KC_LCBR, KC_RCBR, KC_AT,   NO_IMPL,
+        _______, KC_HASH, KC_LPRN, KC_RPRN, KC_COLN, KC_PERC,
+        _______, KC_QUES, MOD_EXL, MOD_AMP, MOD_PIP, NO_IMPL,
         xxxxxxx, xxxxxxx, xxxxxxx,                   _______,
 
-        NO_IMPL, MOD_AMP, MOD_PIP, MOD_AT,  MOD_PRC, NO_IMPL, _______, NO_IMPL,
-        KC_HASH, KC_RCBR, KC_LCBR, KC_SCLN, KC_BSLS, SCOPE,   _______,
-        KC_QUOT, KC_TILD, KC_GRV,  KC_EXLM, KC_QUES, NO_IMPL,
+        NO_IMPL, KC_ASTR, KC_RBRC, KC_LBRC, KC_PLUS, _______, _______, _______,
+        KC_CIRC, KC_EQL,  KC_RABK, KC_LABK, KC_GRV,  _______, _______,
+        NO_IMPL, MOD_MIN, MOD_TLD, MOD_BSL, MOD_SLS, _______,
                           xxxxxxx, xxxxxxx, xxxxxxx
     ),
 
     [NUM] = MINLAYOUT(
         _______, _______,
-        _______, MOD_DLR, MOD_SLS, MOD_LBR, MOD_RBR, NO_IMPL,
-        _______, KC_PLUS, KC_MINS, KC_LPRN, KC_RPRN, KC_CIRC,
-        _______, KC_EQL,  KC_ASTR, KC_LABK, KC_RABK, UPDIR,
+        _______, _______, KC_7,    KC_8,    KC_9,    _______,
+        _______, KC_0,    KC_4,    KC_5,    KC_6,    _______,
+        _______, _______, KC_1,    KC_2,    KC_3,    _______,
         xxxxxxx, xxxxxxx, xxxxxxx,                   _______,
 
-        NO_IMPL, KC_7,    KC_8,    KC_9,    KC_PERC, NO_IMPL, _______, _______,
-        KC_HASH, KC_4,    KC_5,    KC_6,    KC_DOT,  _______, _______,
-        KC_0,    KC_1,    KC_2,    KC_3,    KC_COMM, KC_RCTL,
+        _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, MOD_COM, MOD_DOT, _______, _______,
                           xxxxxxx, xxxxxxx, xxxxxxx
     ),
 
     [NAV] = MINLAYOUT(
         _______, _______,
-        NO_IMPL, KC_LSFT, KC_LGUI, KC_LCTL, KC_LALT, NO_IMPL,
-        NO_IMPL, NO_IMPL, _______, NO_IMPL, VIM_CMD, NO_IMPL,
-        _______, UNDO,    REDO,    COPY,    PASTE,   PASTE_P,
+        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, VIM_CMD, _______,
+        _______, _______, KC_LGUI, KC_LALT, KC_LCTL, _______,
         xxxxxxx, xxxxxxx, xxxxxxx,                   _______,
 
-        PG_TOP,  KC_PGUP, KC_PGDN, PG_END,  xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,
+        KC_HOME, KC_PGUP, KC_PGDN, KC_END,  xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,
         KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, xxxxxxx, xxxxxxx, _______,
-        KC_HOME, WORD_L,  WORD_R,  KC_END,  xxxxxxx, _______,
+        _______, KC_LCTL, KC_LALT, KC_LGUI, xxxxxxx, _______,
                           xxxxxxx, xxxxxxx, xxxxxxx
     ),
 
     [FUN] = MINLAYOUT(
-        _______, xxxxxxx,
+        _______, KC_PWR,
         xxxxxxx, KC_F12,  KC_F7,   KC_F8,   KC_F9, NO_IMPL,
         xxxxxxx, KC_F11,  KC_F4,   KC_F5,   KC_F6, NO_IMPL,
         _______, KC_F10,  KC_F1,   KC_F2,   KC_F3, NO_IMPL,
-        xxxxxxx, xxxxxxx, xxxxxxx,                 NO_IMPL,
+        xxxxxxx, xxxxxxx, xxxxxxx,                 _______,
 
         NO_IMPL, CAP_SEL, CAP_SCN, NO_IMPL, NO_IMPL, xxxxxxx, xxxxxxx, xxxxxxx,
         NO_IMPL, KC_MPRV, KC_MPLY, KC_MNXT, NO_IMPL, xxxxxxx, xxxxxxx,
@@ -92,14 +92,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [SYS] = MINLAYOUT(
         _______, xxxxxxx,
-        xxxxxxx, NO_IMPL, GF_19,   SF_18,   F_17,    NO_IMPL,
-        xxxxxxx, SGF_18,  F_19,    GF_18,   GF_17,   NO_IMPL,
-        xxxxxxx, NO_IMPL, SF_19,   F_18,    NO_IMPL, NO_IMPL,
+        xxxxxxx, NO_IMPL, NO_IMPL, KC_C11,  KC_C9,   NO_IMPL,
+        xxxxxxx, KC_C8,   KC_C7,   KC_C6,   KC_C5,   NO_IMPL,
+        _______, NO_IMPL, KC_LGUI, NO_IMPL, NO_IMPL, NO_IMPL,
         xxxxxxx, xxxxxxx, _______,                   _______,
 
-        NO_IMPL, SGF_13,  SGF_16,  NO_IMPL, NO_IMPL, xxxxxxx, xxxxxxx, xxxxxxx,
-        F_13,    F_14,    F_15,    F_16,    NO_IMPL, xxxxxxx, xxxxxxx,
-        NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, xxxxxxx,
+        NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, xxxxxxx, xxxxxxx, xxxxxxx,
+        KC_C1,   KC_C2,   KC_C3,   KC_C4,   NO_IMPL, xxxxxxx, xxxxxxx,
+        NO_IMPL, KC_C10,  KC_C12,  KC_C13,  NO_IMPL, _______,
                           _______, xxxxxxx, xxxxxxx
     ),
 
@@ -126,11 +126,9 @@ const cross_os_key_tap_t cross_os_key_tap[] = {
     {PG_TOP, LCTL(KC_HOME), LCMD(KC_UP)},
     {PG_END, LCTL(KC_END), LCMD(KC_DOWN)},
     {UNDO, LCTL(KC_Z), LCMD(KC_Z)},
-    {REDO, LCTL(KC_Y), LCMD(LSFT(KC_Z))},
     {COPY, LCTL(KC_INSERT), LCMD(KC_C)},
+    {CUT, LCTL(KC_X), LCMD(KC_X)},
     {PASTE, LSFT(KC_INSERT), LCMD(KC_V)},
-    {PASTE_P, LCTL(LSFT(KC_V)), LCMD(LSFT(LOPT(KC_V)))},
-    {CA_DEL, LCTL(LALT(KC_DELETE)), LCMD(LALT(KC_ESCAPE))},
     {CAP_SCN, KC_PRINT_SCREEN, LCMD(LSFT(KC_3))},
     {CAP_SEL, LWIN(LSFT(KC_S)), LCMD(LSFT(KC_5))},
 };
@@ -143,9 +141,6 @@ uint8_t NUM_CROSS_OS_KEY_TAP =
  * Custom macros to do some fancy stuff when keys are pressed, held, or raised.
  */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_custom_shift_keys(keycode, record)) {
-        return false;
-    }
     if (!process_cross_os_compat(keycode, record)) {
         return false;
     }
@@ -153,7 +148,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Mod tap intercepts for non-basic keycodes
     if (record->tap.count && record->event.pressed) {
         switch (keycode) {
-        case MOD_DQ:
+        case MOD_DQU:
             tap_code16(KC_DOUBLE_QUOTE);
             return false;
         case MOD_EXL:
@@ -182,25 +177,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
     }
 
-    // Mod tap intercepts for non-basic keycodes that have an extra modifier
-    // if (!record->tap.count) {
-    //     switch (keycode) {
-    //     case MOD_ZEL:
-    //         if (record->event.pressed) {
-    //             register_mods(MOD_LALT);
-    //         } else {
-    //             unregister_mods(MOD_LALT);
-    //         }
-    //         return false;
-    //     case MOD_VIM:
-    //         if (record->event.pressed) {
-    //             register_mods(MOD_LALT);
-    //         } else {
-    //             unregister_mods(MOD_LALT);
-    //         }
-    //         return false;
-    //     }
-    // }
+    // Mod hold intercepts for non-basic keycodes
+    if (!record->tap.count) {
+        switch (keycode) {
+        case MOD_SQU:
+            if (record->event.pressed) {
+                layer_on(SYM);
+                layer_on(NUM);
+            } else {
+                layer_off(NUM);
+                layer_off(SYM);
+            }
+            return false;
+            //     case MOD_ZEL:
+            //         if (record->event.pressed) {
+            //             register_mods(MOD_LALT);
+            //         } else {
+            //             unregister_mods(MOD_LALT);
+            //         }
+            //         return false;
+            //     case MOD_VIM:
+            //         if (record->event.pressed) {
+            //             register_mods(MOD_LALT);
+            //         } else {
+            //             unregister_mods(MOD_LALT);
+            //         }
+            //         return false;
+            //     }
+        }
+    }
 
     // Standard macros
     if (record->event.pressed) {
@@ -227,7 +232,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
  */
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-    case MOD_QUO:
+    case MOD_SQU:
         return 170;
     case MOD_A:
         return 170;
@@ -235,6 +240,15 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         return TAPPING_TERM;
     }
 }
+
+/*
+ * https://docs.qmk.fm/#/feature_combo
+ * Key combinations (combos)
+ */
+const uint16_t PROGMEM caps_combo[] = {KC_LSFT, KC_RSFT, COMBO_END};
+combo_t key_combos[] = {
+    COMBO(caps_combo, KC_CAPS),
+};
 
 // Rotary encoder config. You need to have the clockwise and counter clockwise
 // specified for each layer, otherwise the code cannot compile.
