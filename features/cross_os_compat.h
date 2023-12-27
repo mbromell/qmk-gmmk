@@ -10,9 +10,9 @@
  * keycodes will be overridden by this feature.
  */
 typedef struct {
-  uint16_t keycode;
-  uint16_t windows_keycode;
-  uint16_t macos_keycode;
+    uint16_t keycode;
+    uint16_t windows_keycode;
+    uint16_t macos_keycode;
 } cross_os_key_tap_t;
 
 /** Table of keycodes that differ between OS. */

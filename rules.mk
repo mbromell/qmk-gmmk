@@ -6,3 +6,4 @@ NKRO_ENABLE = yes
 OS_DETECTION_ENABLE = yes
 RGBLIGHT_ENABLE = no
 SRC += features/cross_os_compat.c
+SRC += features/zen_nav.c

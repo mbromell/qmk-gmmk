@@ -9,16 +9,18 @@ enum layers {
     NAV,
     FUN,
     SYS,
+
+    YAB,
+    ZEL,
 };
 
 enum custom_keycodes {
     UPDIR = SAFE_RANGE,
     SCOPE,
+    WALRUS,
 
     WORD_L,
     WORD_R,
-    PG_TOP,
-    PG_END,
     UNDO,
     COPY,
     CUT,
@@ -27,6 +29,27 @@ enum custom_keycodes {
 
     CAP_SCN, // capture screen
     CAP_SEL, // capture selection of screen
+
+    FOC_H,
+    FOC_J,
+    FOC_K,
+    FOC_L,
+    TAB_1,
+    TAB_2,
+    TAB_3,
+    TAB_4,
+    WIN_ROT,
+    WIN_MAX,
+    WIN_EQU,
+    WIN_FLT,
+    WIN_SPL,
+    WIN_NEW,
+    WIN_CLS,
+    TAB_NEW,
+    TAB_CLS,
+    TAB_MVR,
+    TAB_MVL,
+    SES_MAN,
 };
 
 #define xxxxxxx KC_NO
@@ -46,9 +69,8 @@ enum custom_keycodes {
 #define MOD_SQU LT(NUM, KC_QUOTE)
 #define MOD_SLS LT(SYM, KC_SLASH)
 
-#define MOD_SYS LT(SYS, KC_SPACE)
-#define MOD_ZEL LM(SYS, MOD_LALT)
-#define MOD_VIM LM(SYS, MOD_LCTL)
+#define MOD_YAB LT(YAB, KC_SPACE)
+#define MOD_ZEL LT(ZEL, MOD_LALT)
 
 // Layer SYM and NUM
 #define MOD_EXL LGUI_T(KC_EXCLAIM)   // non-basic

@@ -22,6 +22,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include "alias.h"
 #include "features/cross_os_compat.h"
+#include "features/zen_nav.h"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -30,24 +31,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
         KC_SCLN, MOD_A,   MOD_S,   KC_D,    KC_F,    KC_G,
         KC_LSFT, KC_Z,    MOD_X,   MOD_C,   MOD_V,   KC_B,
-        NO_IMPL, NO_IMPL, MOD_ZEL,                   MOD_SYS,
+        NO_IMPL, NO_IMPL, MOD_ZEL,                   MOD_YAB,
 
         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UNDS, KC_ESC,  KC_DEL,
         KC_H,    KC_J,    KC_K,    KC_L,    MOD_DQU, MOD_SQU, KC_ENT,
         KC_N,    MOD_M,   MOD_COM, MOD_DOT, MOD_SLS, KC_RSFT,
-                          MOD_VIM, NO_IMPL, NO_IMPL
+                          MOD_ZEL, NO_IMPL, NO_IMPL
     ),
 
     [SYM] = MINLAYOUT(
         _______, _______,
         _______, KC_DLR,  KC_LCBR, KC_RCBR, KC_AT,   NO_IMPL,
         _______, KC_HASH, KC_LPRN, KC_RPRN, KC_COLN, KC_PERC,
-        _______, KC_QUES, MOD_EXL, MOD_AMP, MOD_PIP, NO_IMPL,
+        _______, KC_QUES, MOD_EXL, MOD_AMP, MOD_PIP, UPDIR,
         xxxxxxx, xxxxxxx, xxxxxxx,                   _______,
 
         NO_IMPL, KC_ASTR, KC_RBRC, KC_LBRC, KC_PLUS, _______, _______, _______,
         KC_CIRC, KC_EQL,  KC_RABK, KC_LABK, KC_GRV,  _______, _______,
-        NO_IMPL, MOD_MIN, MOD_TLD, MOD_BSL, MOD_SLS, _______,
+        WALRUS,  MOD_MIN, MOD_TLD, MOD_BSL, MOD_SLS, _______,
                           xxxxxxx, xxxxxxx, xxxxxxx
     ),
 
@@ -90,19 +91,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           xxxxxxx, xxxxxxx, xxxxxxx
     ),
 
-    [SYS] = MINLAYOUT(
-        _______, xxxxxxx,
-        xxxxxxx, NO_IMPL, NO_IMPL, KC_C11,  KC_C9,   NO_IMPL,
-        xxxxxxx, KC_C8,   KC_C7,   KC_C6,   KC_C5,   NO_IMPL,
-        _______, NO_IMPL, KC_LGUI, NO_IMPL, NO_IMPL, NO_IMPL,
-        xxxxxxx, xxxxxxx, _______,                   _______,
+    // Just copy paste each layer, keep it simple don't over engineer to comply
+    // with DRY..
+    [YAB] = MINLAYOUT(
+        _______, _______,
+        _______, WIN_CLS, TAB_CLS, WIN_EQU, WIN_ROT, TAB_NEW,
+        _______, TAB_1,   TAB_2,   TAB_3,   TAB_4,   _______,
+        _______, _______, _______, _______, WIN_SPL, _______,
+        _______, _______, _______,                   _______,
 
-        NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, NO_IMPL, xxxxxxx, xxxxxxx, xxxxxxx,
-        KC_C1,   KC_C2,   KC_C3,   KC_C4,   NO_IMPL, xxxxxxx, xxxxxxx,
-        NO_IMPL, KC_C10,  KC_C12,  KC_C13,  NO_IMPL, _______,
-                          _______, xxxxxxx, xxxxxxx
+        _______, TAB_MVL, TAB_MVR, SES_MAN, _______, _______, _______, _______,
+        FOC_H,   FOC_J,   FOC_K,   FOC_L,   _______, _______, _______,
+        WIN_NEW, WIN_MAX, WIN_FLT, _______, _______, _______,
+                          _______, _______, _______
     ),
+    [ZEL] = MINLAYOUT(
+        _______, _______,
+        _______, WIN_CLS, TAB_CLS, WIN_EQU, WIN_ROT, TAB_NEW,
+        _______, TAB_1,   TAB_2,   TAB_3,   TAB_4,   _______,
+        _______, _______, _______, _______, WIN_SPL, _______,
+        _______, _______, _______,                   _______,
 
+        _______, TAB_MVL, TAB_MVR, SES_MAN, _______, _______, _______, _______,
+        FOC_H,   FOC_J,   FOC_K,   FOC_L,   _______, _______, _______,
+        WIN_NEW, WIN_MAX, WIN_FLT, _______, _______, _______,
+                          _______, _______, _______
+    ),
 
     /*
     [] = MINLAYOUT(
@@ -121,19 +135,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const cross_os_key_tap_t cross_os_key_tap[] = {
-    {WORD_L, LCTL(KC_LEFT), LOPT(KC_LEFT)},
-    {WORD_R, LCTL(KC_RIGHT), LOPT(KC_RIGHT)},
-    {PG_TOP, LCTL(KC_HOME), LCMD(KC_UP)},
-    {PG_END, LCTL(KC_END), LCMD(KC_DOWN)},
-    {UNDO, LCTL(KC_Z), LCMD(KC_Z)},
-    {COPY, LCTL(KC_INSERT), LCMD(KC_C)},
-    {CUT, LCTL(KC_X), LCMD(KC_X)},
-    {PASTE, LSFT(KC_INSERT), LCMD(KC_V)},
-    {CAP_SCN, KC_PRINT_SCREEN, LCMD(LSFT(KC_3))},
-    {CAP_SEL, LWIN(LSFT(KC_S)), LCMD(LSFT(KC_5))},
+    {WORD_L,    C(KC_LEFT),         A(KC_LEFT)},
+    {WORD_R,    C(KC_RIGHT),        A(KC_RIGHT)},
+    {UNDO,      C(KC_Z),            G(KC_Z)},
+    {COPY,      C(KC_INSERT),       G(KC_C)},
+    {CUT,       C(KC_X),            G(KC_X)},
+    {PASTE,     S(KC_INSERT),       G(KC_V)},
+    {CAP_SCN,   KC_PRINT_SCREEN,    G(S(KC_3))},
+    {CAP_SEL,   G(S(KC_S)),         G(S(KC_5))},
 };
-uint8_t NUM_CROSS_OS_KEY_TAP =
-    sizeof(cross_os_key_tap) / sizeof(*cross_os_key_tap);
+uint8_t NUM_CROSS_OS_KEY_TAP = sizeof(cross_os_key_tap) / sizeof(*cross_os_key_tap);
+
+const zen_nav_t zen_nav[] = {
+    {FOC_H,     C(KC_F13),          A(KC_LEFT)},
+    {FOC_J,     C(KC_F14),          A(KC_DOWN)},
+    {FOC_K,     C(KC_F15),          A(KC_UP)},
+    {FOC_L,     C(KC_F16),          A(KC_RIGHT)},
+    {TAB_1,     C(S(G(KC_F13))),    A(KC_COMMA)},
+    {TAB_2,     C(S(G(KC_F14))),    A(KC_DOT)},
+    {TAB_3,     C(S(G(KC_F15))),    A(KC_SLASH)},
+    {TAB_4,     C(S(G(KC_F16))),    A(KC_SEMICOLON)},
+    {WIN_ROT,   C(KC_F17),          A(KC_RIGHT_BRACKET)},
+    {WIN_MAX,   C(S(KC_F18)),       A(S(KC_MINUS))},
+    {WIN_EQU,   NO_IMPL,            NO_IMPL},
+    {WIN_FLT,   NO_IMPL,            A(KC_BACKSLASH)},
+    {WIN_SPL,   NO_IMPL,            NO_IMPL},
+    {WIN_NEW,   NO_IMPL,            A(KC_QUOTE)},
+    {WIN_CLS,   G(KC_Q),            A(S(KC_GRAVE))},
+    {TAB_NEW,   NO_IMPL,            A(S(KC_BACKSLASH))},
+    {TAB_CLS,   NO_IMPL,            A(KC_MINUS)},
+    {TAB_MVR,   NO_IMPL,            A(S(KC_SLASH))},
+    {TAB_MVL,   NO_IMPL,            A(S(KC_SEMICOLON))},
+    {SES_MAN,   C(KC_UP),           A(S(KC_9))},
+};
+uint8_t NUM_ZEN_NAV = sizeof(zen_nav) / sizeof(*zen_nav);
 // clang-format on
 
 /**
@@ -142,6 +177,9 @@ uint8_t NUM_CROSS_OS_KEY_TAP =
  */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_cross_os_compat(keycode, record)) {
+        return false;
+    }
+    if (!process_zen_nav(keycode, record)) {
         return false;
     }
 
@@ -166,14 +204,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case MOD_BSL:
             tap_code16(KC_BACKSLASH);
             return false;
-        case MOD_ZEL:
-            // tap_code16(KC_ENTER);
-            // return false;
-            break;
-        case MOD_VIM:
-            // tap_code16(KC_TAB);
-            // return false;
-            break;
+        // case MOD_ZEL:
+        //     tap_code16(KC_ENTER);
+        //     return false;
+        //     break;
+        // case MOD_VIM:
+        //     tap_code16(KC_TAB);
+        //     return false;
+        //     break;
         }
     }
 
@@ -215,6 +253,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case SCOPE:
             SEND_STRING("::");
+            return false;
+        case WALRUS:
+            SEND_STRING(":=");
             return false;
         case VIM_CMD:
             tap_code16(KC_ESC);
@@ -259,6 +300,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [NUM] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
     [NAV] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
     [FUN] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
-    [SYS] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
+    [YAB] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
+    [ZEL] = {ENCODER_CCW_CW(KC_TRNS, KC_TRNS)},
 };
 #endif
