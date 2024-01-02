@@ -70,7 +70,6 @@ enum custom_keycodes {
 #define MOD_SLS LT(FUN, KC_SLASH)
 
 #define MOD_YAB LT(YAB, KC_SPACE)
-#define MOD_ZEL LT(ZEL, MOD_LALT)
 
 // Layer SYM and NUM
 #define MOD_EXL LGUI_T(KC_EXCLAIM)   // non-basic

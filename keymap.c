@@ -31,12 +31,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
         KC_SCLN, MOD_A,   MOD_S,   KC_D,    KC_F,    KC_G,
         KC_LSFT, KC_Z,    MOD_X,   MOD_C,   MOD_V,   KC_B,
-        NO_IMPL, NO_IMPL, MOD_ZEL,                   MOD_YAB,
+        NO_IMPL, NO_IMPL, MO(ZEL),                   MOD_YAB,
 
         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UNDS, KC_ESC,  KC_DEL,
         KC_H,    KC_J,    KC_K,    KC_L,    MOD_DQU, MOD_SQU, KC_ENT,
         KC_N,    MOD_M,   MOD_COM, MOD_DOT, MOD_SLS, KC_RSFT,
-                          MOD_ZEL, NO_IMPL, NO_IMPL
+                          MO(ZEL), NO_IMPL, NO_IMPL
     ),
 
     [SYM] = MINLAYOUT(
