@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         xxxxxxx, xxxxxxx, xxxxxxx,                   _______,
 
         KC_HOME, KC_PGUP, KC_PGDN, KC_END,  xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx,
-        KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, xxxxxxx, xxxxxxx, _______,
+        KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, xxxxxxx, xxxxxxx, _______,
         _______, KC_LCTL, KC_LALT, KC_LGUI, xxxxxxx, _______,
                           xxxxxxx, xxxxxxx, xxxxxxx
     ),
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         NO_IMPL, CAP_SEL, CAP_SCN, NO_IMPL, NO_IMPL, xxxxxxx, xxxxxxx, xxxxxxx,
         NO_IMPL, KC_MPRV, KC_MPLY, KC_MNXT, NO_IMPL, xxxxxxx, xxxxxxx,
-        NO_IMPL, KC_MUTE, KC_VOLD, KC_VOLU, NO_IMPL, _______,
+        NO_IMPL, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
                           xxxxxxx, xxxxxxx, xxxxxxx
     ),
 
@@ -156,14 +156,14 @@ const zen_nav_t zen_nav[] = {
     {TAB_3,     C(S(G(KC_F15))),    A(KC_SLASH)},
     {TAB_4,     C(S(G(KC_F16))),    A(KC_SEMICOLON)},
     {WIN_ROT,   C(KC_F17),          A(KC_RIGHT_BRACKET)},
-    {WIN_MAX,   C(S(KC_F18)),       A(S(KC_MINUS))},
-    {WIN_EQU,   NO_IMPL,            NO_IMPL},
-    {WIN_FLT,   NO_IMPL,            A(KC_BACKSLASH)},
-    {WIN_SPL,   NO_IMPL,            NO_IMPL},
+    {WIN_MAX,   C(G(KC_F17)),       A(S(KC_MINUS))},
+    {WIN_EQU,   C(S(G(KC_F17))),    NO_IMPL},
+    {WIN_FLT,   C(KC_F18),          A(KC_BACKSLASH)},
+    {WIN_SPL,   C(S(KC_F18)),       NO_IMPL},
     {WIN_NEW,   NO_IMPL,            A(KC_QUOTE)},
     {WIN_CLS,   G(KC_Q),            A(S(KC_GRAVE))},
     {TAB_NEW,   NO_IMPL,            A(S(KC_BACKSLASH))},
-    {TAB_CLS,   NO_IMPL,            A(KC_MINUS)},
+    {TAB_CLS,   NO_IMPL,            A(KC_GRAVE)},
     {TAB_MVR,   NO_IMPL,            A(S(KC_SLASH))},
     {TAB_MVL,   NO_IMPL,            A(S(KC_SEMICOLON))},
     {SES_MAN,   C(KC_UP),           A(S(KC_9))},

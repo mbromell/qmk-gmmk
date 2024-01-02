@@ -67,7 +67,7 @@ enum custom_keycodes {
 #define MOD_S LT(NAV, KC_S)
 #define MOD_DQU LT(SYM, KC_DOUBLE_QUOTE) // non-basic
 #define MOD_SQU LT(NUM, KC_QUOTE)
-#define MOD_SLS LT(SYM, KC_SLASH)
+#define MOD_SLS LT(FUN, KC_SLASH)
 
 #define MOD_YAB LT(YAB, KC_SPACE)
 #define MOD_ZEL LT(ZEL, MOD_LALT)
